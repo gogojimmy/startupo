@@ -27,6 +27,7 @@ gem 'paperclip'
 
 gem 'geocoder'
 gem 'simple_form'
+gem 'slim'
 
 # Deploy with Capistrano
 gem 'capistrano'
