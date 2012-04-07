@@ -14,6 +14,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass'
   gem 'compass-rails'
+  gem 'bootstrap-sass'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -22,7 +23,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'bootstrap-sass'
 gem 'paperclip'
 
 gem 'geocoder'
