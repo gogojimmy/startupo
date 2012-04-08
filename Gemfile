@@ -28,6 +28,7 @@ gem 'paperclip'
 gem 'geocoder'
 gem 'simple_form'
 gem 'slim'
+gem 'haml2slim'
 
 # Deploy with Capistrano
 gem 'capistrano'
