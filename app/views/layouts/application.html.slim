@@ -1,0 +1,43 @@
+doctype html
+html lang="ZH"
+  head
+    title Starup-O
+    link href="/assets/compass/screen.css" media="screen, projection" rel="stylesheet" type="text/css"
+    link href="/assets/compass/print.css" media="print" rel="stylesheet" type="text/css"
+    /[ if lt IE 9 ]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    meta name="viewport" content="width=device-width" initial-scale="1.0"
+    meta charset="UTF-8"
+  body
+    nav.navbar.navbar-fixed
+      div.navbar-inner
+        div.container
+          a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
+          a.brand href="/" Startup-O
+          div.nav-collapse
+            ul.nav
+              li
+                a href="#" About
+              li
+                a href="#" Resources
+              li
+                a href="#" Startups
+              li
+                a href="#" Events
+          = render :partial => 'shared/not_login_nav'
+    section.container
+      - flash.each do |name, msg|
+        div{class="alert alert-#{name == :notice ? "success" : "error"}"}
+          a.close data-dismiss="alert" &times;
+          = simple_format(msg)
+      div.row
+        = yield
+      hr
+        footer.footer
+          p
+            | © 2012
+            a href="http://www.startupo.com"  startupo.com
+            |  All Rights Reserved.
