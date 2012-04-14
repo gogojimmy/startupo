@@ -1,4 +1,6 @@
 Startup::Application.routes.draw do
+  devise_for :users
+
   get '/', :to => "welcomes#index"
   root :to => "welcomes#index"
 

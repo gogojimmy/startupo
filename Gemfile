@@ -29,6 +29,7 @@ gem 'geocoder'
 gem 'simple_form'
 gem 'slim'
 gem 'haml2slim'
+gem 'devise'
 
 # Deploy with Capistrano
 gem 'capistrano'
