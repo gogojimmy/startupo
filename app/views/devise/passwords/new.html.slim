@@ -1,0 +1,8 @@
+h2= I18n.t('user.forget_your_password?')
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  = f.error_notification
+  .inputs
+    = f.input :email, :label => I18n.t('user.email'), :required => true
+  .actions
+    = f.button :submit, I18n.t('user.send_me_reset_password_instructions')
+= render "links"

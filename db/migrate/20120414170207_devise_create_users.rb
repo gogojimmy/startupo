@@ -6,11 +6,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :id_no
       t.date :birthday
       t.string :company
-      t.integer :capital
-      t.string :industry_type
-      t.string :website
       t.string :title
-      t.text :info
+      t.string :mobile
 
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""

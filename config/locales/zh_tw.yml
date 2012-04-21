@@ -1,0 +1,7 @@
+zh_tw:
+  user:
+    attributes:
+      role: '身分'
+    role:
+      personal: '個人'
+      company: '公司'

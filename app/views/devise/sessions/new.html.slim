@@ -1,0 +1,9 @@
+h2=I18n.t('user.login')
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  .inputs
+    = f.input :email, :label => I18n.t('user.email'), :required => false, :autofocus => true
+    = f.input :password, :label => I18n.t('user.password'), :required => false
+    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+  .actions
+    = f.button :submit, I18n.t('user.sign')
+= render "links"
