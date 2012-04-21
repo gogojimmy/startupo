@@ -24,7 +24,7 @@ zh_tw:
       send_instructions: '您將在幾分鐘後收到一封電子郵件，內有確認帳號的步驟說明。'
       confirmed: '您的帳號已經過確認，現在您已成功登入。'
     registrations:
-      signed_up: '您已經成功的登錄，確認信件已送至您的 Email 信箱。'
+      signed_up: '感謝您的註冊，史塔波團隊會以最快的速度確認您的帳號。'
       updated: '您已經成功的更新帳號資訊。'
       destroyed: '再會！您的帳號已被取消。有緣再會。'
     unlocks:

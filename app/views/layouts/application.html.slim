@@ -27,7 +27,10 @@ html lang="ZH"
                 a href="#" Startups
               li
                 a href="#" Events
-          = render :partial => 'shared/not_login_nav'
+          - if current_user
+            = render :partial => 'shared/login_nav'
+          - else
+            = render :partial => 'shared/not_login_nav'
     section.container
       - flash.each do |name, msg|
         div{class="alert alert-#{name == :notice ? "success" : "error"}"}
