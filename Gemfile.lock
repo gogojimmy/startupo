@@ -90,6 +90,9 @@ GEM
       thor (~> 0.14.6)
     guard-rspec (0.6.0)
       guard (>= 0.10.0)
+    guard-spork (0.6.1)
+      guard (>= 0.10.0)
+      spork (>= 0.8.4)
     haml (3.1.4)
     haml2slim (0.4.6)
       haml (>= 3.0)
@@ -190,6 +193,7 @@ GEM
     slim (1.2.0)
       temple (~> 0.4.0)
       tilt (~> 1.3.3)
+    spork (0.9.0)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -228,6 +232,7 @@ DEPENDENCIES
   fakeweb
   geocoder
   guard-rspec
+  guard-spork
   haml2slim
   jquery-rails
   launchy
@@ -241,5 +246,6 @@ DEPENDENCIES
   simple_form
   simplecov
   slim
+  spork
   uglifier (>= 1.0.3)
   vcr

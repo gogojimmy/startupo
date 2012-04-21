@@ -42,7 +42,9 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "shoulda-matchers"
   gem 'fakeweb'
+  gem 'spork'
   gem 'guard-rspec'
+  gem "guard-spork"
   gem 'simplecov', :require => false
   gem 'awesome_print'
   gem 'capybara'
