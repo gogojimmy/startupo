@@ -1,7 +1,12 @@
 doctype html
 html lang="ZH"
   head
-    title Starup-O
+    -if user_signed_in?
+      title= "#{I18n.t('brand')} #{I18n.t('brand_description')}"
+    -elsif @title
+      title= "#{I18n.t('brand')} | #{I18n.t(@title)}"
+    -else
+      title= "#{I18n.t('brand')}"
     link href="/assets/compass/screen.css" media="screen, projection" rel="stylesheet" type="text/css"
     link href="/assets/compass/print.css" media="print" rel="stylesheet" type="text/css"
     /[ if lt IE 9 ]
@@ -16,24 +21,25 @@ html lang="ZH"
       div.navbar-inner
         div.container
           a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
-          a.brand href="/" Startup-O
+          a.brand href="/" #{I18n.t('brand')}
           div.nav-collapse
             ul.nav
               li
-                a href="#" About
+                a href="#" #{I18n.t('about')}
               li
-                a href="#" Resources
+                a href="#" #{I18n.t('resources')}
               li
-                a href="#" Startups
-              li
-                a href="#" Events
-          = render :partial => 'shared/not_login_nav'
+                a href="#" #{I18n.t('events')}
+          - if current_user
+            = render :partial => 'shared/login_nav'
+          - else
+            = render :partial => 'shared/not_login_nav'
     section.container
       - flash.each do |name, msg|
         div{class="alert alert-#{name == :notice ? "success" : "error"}"}
           a.close data-dismiss="alert" &times;
           = simple_format(msg)
-      div.row
+      article
         = yield
       hr
         footer.footer

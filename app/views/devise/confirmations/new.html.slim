@@ -1,0 +1,8 @@
+h2= I18n.t('user.resend_confirmation_instructions')
+= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+  = f.error_notification
+  .inputs
+    = f.input :email, :label => I18n.t('user.email'), :required => true
+  .actions
+    = f.button :submit, I18n.t('user.resend_comfirmation_instrauctions')
+= render "links"

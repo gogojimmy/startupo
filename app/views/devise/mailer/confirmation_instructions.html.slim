@@ -1,0 +1,3 @@
+p= I18n.t('user.welcome') @resource.email
+p=_I18n.t('user.you_can_confirm_your_account_email_through_the_link_below')
+p= link_to I18n.t('user.confirm_my_account'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
