@@ -2,48 +2,19 @@
 
 FactoryGirl.define do
   factory :user do
-    is_admin false
-    name "test"
-    role "personal"
-    id_no "12345678"
-    birthday "1983-01-01".to_date
-    company "test-company"
-    capital 1000000
-    industry_type "IT"
-    website "http://example.com"
-    title "manager"
-    info "its my account"
-    email "test@example.com"
-    phone "0975519929"
-  end
-  factory :admin, class: User do
-    is_admin true
-    name "admin"
-    role "personal"
-    id_no "12345678"
-    birthday "1983-01-01".to_date
-    company "test-company"
-    capital 1000000
-    industry_type "IT"
-    website "http://example.com"
-    title "manager"
-    info "its my account"
-    email "test@example.com"
-    phone "0975519929"
-  end
-  factory :company, class: User do
-    is_admin false
-    name "A company"
-    role "company"
-    id_no "12345678"
-    birthday "1983-01-01".to_date
-    company "test-company"
-    capital 1000000
-    industry_type "IT"
-    website "http://example.com"
-    title "manager"
-    info "its my account"
-    email "test@example.com"
-    phone "0975519929"
+    id_no "A127421684"
+    password "123456"
+    birthday { 21.years.ago }
+    sequence(:name) { |n| "test#{n}" }
+    sequence(:company) { |n| "Example Company#{n}" }
+    title "RD"
+    mobile "0975519929"
+    sequence(:email) { |n| "example#{n}@example.com" }
+
+    trait :admin do
+      is_admin true
+    end
+
+    factory :admin, :traits => [:admin]
   end
 end

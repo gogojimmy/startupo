@@ -1,11 +1,11 @@
-h2= I18n.t('user.change_your_password')
+h2= I18n.t('user.change_password')
 = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
   = f.error_notification
   = f.input :reset_password_token, :as => :hidden
   = f.full_error :reset_password_token
   .inputs
-    = f.input :password, :label => I18n.t('user.new_password'), :required => true
-    = f.input :password_confirmation, :label => I18n.t('user.confirm_new_password'), :required => true
+    = f.input :password, :label => I18n.t('user.attributes.new_password'), :required => true
+    = f.input :password_confirmation, :label => I18n.t('user.attributes.confirm_new_password'), :required => true
   .actions
-    = f.button :submit, I18n.t('user.change_my_password')
+    = f.button :submit, I18n.t('user.change_password')
 = render "links"
