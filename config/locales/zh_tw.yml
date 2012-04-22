@@ -1,4 +1,13 @@
 zh_tw:
+  brand: '史塔波'
+  brand_description: '最豐富的企業資源平台'
+  about: '關於史塔波'
+  resources: '資源'
+  events: '活動'
+  action:
+    edit: '修改'
+    save: '儲存'
+    update_successful: '更新成功'
   user:
     attributes:
       name: '姓名'
@@ -9,10 +18,19 @@ zh_tw:
       title: '職稱'
       password: '密碼'
       password_confirmation: '確認密碼'
+      new_password: '新密碼'
+      confirm_new_password: '新密碼確認'
       mobile: '手機'
       address: '地址'
     dashboard:
       manage_my_profile: '管理我的資料'
+    my_profile: '我的資料'
+    my_integrety: '檔案完整度'
+    my_requests: '我發出的需求'
+    my_wants: '我想要的媒合'
+    my_attendings: '我參加的活動'
+    incoming_event: '最近一次的活動'
+    change_password: '修改密碼'
     devise:
       sign_up: '加入史塔波'
       sign_in: '登入'
