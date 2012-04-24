@@ -8,6 +8,7 @@ zh_tw:
     edit: '修改'
     save: '儲存'
     update_successful: '更新成功'
+    show_more: '顯示更多'
   user:
     attributes:
       name: '姓名'
@@ -24,19 +25,35 @@ zh_tw:
       address: '地址'
     dashboard:
       manage_my_profile: '管理我的資料'
-    my_profile: '我的資料'
+    my_profile: '的個人資料'
     my_integrety: '檔案完整度'
     my_requests: '我發出的需求'
     my_wants: '我想要的媒合'
     my_attendings: '我參加的活動'
     incoming_event: '最近一次的活動'
     change_password: '修改密碼'
+    not_yet_confirm: '您的帳號尚未確認，請耐心等候'
     devise:
       sign_up: '加入史塔波'
       sign_in: '登入'
       sign_out: '登出'
       remember_me: '記住我'
       forget_password?: '忘記你的密碼？'
+  admin:
+    dashboard:
+      created_at: '建立於'
+      panel: '管理者後台'
+      unconfirmed_users: '待確認的用戶'
+      unhandled_requests: '待處理的需求'
+      events: '活動列表'
+    action:
+      confirm_user: '確認為正式用戶'
+      deny_user: '拒絕此用戶'
+    message:
+      user_confirmed: '用戶確認成功'
+      user_confirm_failed: '用戶確認失敗'
+    column:
+      apply_at: '申請時間'
   date:
     abbr_day_names:
     - 日

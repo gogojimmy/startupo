@@ -1,7 +1,4 @@
 ul class="nav pull-right"
-  li
-    p Hi! #{current_user.name}
-  li
-    = link_to I18n.t('user.dashboard.manage_my_profile'), current_user
-  li
-    = link_to I18n.t('user.devise.sign_out'), destroy_user_session_path, :method => :delete
+  li= link_to I18n.t('admin.dashboard.panel'), admin_dashboard_path if current_user.is_admin
+  li= link_to I18n.t('user.dashboard.manage_my_profile'), current_user
+  li= link_to I18n.t('user.devise.sign_out'), destroy_user_session_path, :method => :delete
