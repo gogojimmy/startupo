@@ -24,4 +24,6 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  Factory.factories.clear
+  Dir[Rails.root.join("spec/factories/**/*.rb")].each{|f| load f}
 end
