@@ -8,6 +8,7 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'capybara/rails'
   require 'capybara/rspec'
+  load "#{Rails.root}/db/seeds.rb"
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
@@ -20,6 +21,18 @@ Spork.prefork do
     config.use_transactional_fixtures = true
     config.infer_base_class_for_anonymous_controllers = false
     config.include Devise::TestHelpers, :type => :controller
+
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
 end
 
