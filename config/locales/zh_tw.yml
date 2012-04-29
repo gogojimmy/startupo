@@ -7,7 +7,10 @@ zh_tw:
   action:
     edit: '修改'
     save: '儲存'
+    delete: '刪除'
     update_successful: '更新成功'
+    create_successful: '新增成功'
+    destroy_successful: '刪除成功'
     show_more: '顯示更多'
   user:
     attributes:
@@ -54,6 +57,12 @@ zh_tw:
       user_confirm_failed: '用戶確認失敗'
     column:
       apply_at: '申請時間'
+  resource_type:
+    attributes:
+      name: '種類名稱'
+      description: '描述'
+    back_to_index: '回資源種類列表'
+    new: '新增資源種類'
   date:
     abbr_day_names:
     - 日

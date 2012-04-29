@@ -2,14 +2,15 @@
 
 FactoryGirl.define do
   factory :resource do
-    user_id 1
+    user
     have_resource false
     find_resource false
-    contact "MyString"
-    phone "MyString"
-    email "MyString"
-    description "MyText"
-    state "MyString"
+    contact "Jimmy"
+    phone "0975519929"
+    email "test@example.com"
+    description "A description for resource"
+    state "public"
     to_public false
+    resource_type
   end
 end

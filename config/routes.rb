@@ -7,12 +7,15 @@ Startup::Application.routes.draw do
   end
 
   resources :users, :only => [:show, :edit, :update]
+  resources :resources, :except => [:destroy]
 
   namespace :admin do
     get '/dashboard' => "dashboards#index"
     get '/unconfirmed_users' => "users#unconfirmed_users"
     put '/confirm_user/:id' => "users#confirm_user"
     resources :users
+    resources :resources
+    resources :resource_types
   end
 
   get '/', :to => "welcomes#index"

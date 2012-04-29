@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Resource do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:resource_types).through(:resource_type_ships) }
+  it { should belong_to(:user) }
 end
