@@ -1,0 +1,17 @@
+head.resource_type
+  h1= I18n.t('resource_type.show')
+section.resource_type
+  table.table.table-striped.table-condensed.table-bordered
+    tr
+      td= I18n.t('resource_type.attributes.name')
+      td.resource_type_name= @type.name
+    tr
+      td= I18n.t('resource_type.attributes.description')
+      td.resource_type_description= @type.description
+section.resource_type.actions
+  = link_to I18n.t('action.edit'), edit_admin_resource_type_path(@type),
+                                   :class => 'btn'
+  = link_to I18n.t('action.delete'), admin_resource_type_path(@type),
+                                     :method => :delete,
+                                     :confirm => 'Are you sure?',
+                                     :class => 'btn'

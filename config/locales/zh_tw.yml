@@ -63,6 +63,9 @@ zh_tw:
       description: '描述'
     back_to_index: '回資源種類列表'
     new: '新增資源種類'
+    show: '資源種類'
+    index: '資源種類列表'
+    edit: '修改資源種類'
   date:
     abbr_day_names:
     - 日

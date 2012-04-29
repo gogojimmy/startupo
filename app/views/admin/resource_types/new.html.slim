@@ -1,0 +1,6 @@
+head.resource_type
+  h1= I18n.t('resource_type.new')
+= simple_form_for @type, :url => admin_resource_types_path do |f|
+  = render :partial => 'form', :locals => {:f => f}
+= link_to I18n.t('resource_type.back_to_index'), admin_resource_types_path,
+                                                 :class => 'btn'
