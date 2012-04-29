@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421075855) do
+ActiveRecord::Schema.define(:version => 20120429074425) do
+
+  create_table "resources", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "have_resource"
+    t.boolean  "find_resource"
+    t.string   "contact"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "description"
+    t.string   "state"
+    t.boolean  "to_public",     :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "resources", ["user_id"], :name => "index_resources_on_user_id"
 
   create_table "users", :force => true do |t|
     t.boolean  "is_admin",               :default => false
