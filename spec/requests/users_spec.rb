@@ -12,7 +12,6 @@ describe "Users" do
       fill_in 'user_mobile', :with => '0975519929'
       click_button I18n.t('user.devise.sign_up')
       page.should have_content(I18n.t('devise.registrations.signed_up'))
-      page.should have_content("Hi! example")
       User.last.email.should == 'user@example.com'
     end
   end
@@ -24,7 +23,6 @@ describe "Users" do
       fill_in 'user_password', :with => user.password
       click_button I18n.t('user.devise.sign_in')
       page.should have_content(I18n.t('devise.sessions.signed_in'))
-      page.should have_content("Hi! #{user.name}")
       click_link I18n.t('user.devise.sign_out')
       page.should have_content(I18n.t('devise.sessions.signed_out'))
     end

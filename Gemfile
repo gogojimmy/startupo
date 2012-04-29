@@ -30,6 +30,7 @@ gem 'simple_form'
 gem 'slim'
 gem 'haml2slim'
 gem 'devise'
+gem 'will_paginate'
 
 # Deploy with Capistrano
 gem 'capistrano'

@@ -27,7 +27,7 @@ section.user.row
         td.user-mobile= @user.address
   aside.span4
     section.actions.well
-      = link_to I18n.t('action.edit'), edit_user_path(current_user), :class => 'btn btn-primary'
+      = link_to I18n.t('admin.action.confirm_user'), admin_path(@user), :method => :put, :class => 'btn btn-primary' if @user.confirmed_by.nil?
     section.board.integrety.well
       head
         h1 #{I18n.t('user.my_integrety')} #{@user.integrety}%

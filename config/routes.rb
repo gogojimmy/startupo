@@ -8,6 +8,13 @@ Startup::Application.routes.draw do
 
   resources :users, :only => [:show, :edit, :update]
 
+  namespace :admin do
+    get '/dashboard' => "dashboards#index"
+    get '/unconfirmed_users' => "users#unconfirmed_users"
+    put '/confirm_user/:id' => "users#confirm_user"
+    resources :users
+  end
+
   get '/', :to => "welcomes#index"
   root :to => "welcomes#index"
 

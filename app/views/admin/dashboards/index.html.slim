@@ -1,0 +1,21 @@
+div.dashboard.row
+  section.unconfirmed_users.span3.well
+    head
+      h1 #{I18n.t('admin.dashboard.unconfirmed_users')} #{show_badge(@unconfirmed_users.count)}
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            td= I18n.t('admin.dashboard.created_at')
+            td= I18n.t('user.attributes.name')
+        tbody
+        - @unconfirmed_users.each do |user|
+          tr
+            td= user.created_at.to_date
+            td= link_to "#{user.name}", admin_user_path(user)
+      = link_to I18n.t('action.show_more'), admin_unconfirmed_users_path
+  section.unconfirmed_users.span3.well
+    head
+      h1 #{I18n.t('admin.dashboard.unhandled_requests')} #{show_badge()}
+  section.unconfirmed_users.span3.well
+    head
+      h1 #{I18n.t('admin.dashboard.events')} #{show_badge()}

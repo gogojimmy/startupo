@@ -4,11 +4,12 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :id_no, :mobile, :company, :title, :address, :name,
-                  :birthday, :is_admin
+                  :birthday, :is_admin, :confirmed_by
   validates_format_of :id_no, :with => /^\w[12]\d{8}$/
   validates_format_of :email,
                       :with => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   validates_presence_of :email, :name
+  scope :unconfirmed_users, where(:confirmed_by => nil)
 
   def integrety
     has_value = 0.0

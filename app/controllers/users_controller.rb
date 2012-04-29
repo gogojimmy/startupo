@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @title = I18n.t('user.manage_my_profile')
+    if @user.confirmed_by.nil?
+      flash[:notice] = I18n.t('user.not_yet_confirm')
+    end
   end
 
   def edit
