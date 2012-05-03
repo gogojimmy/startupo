@@ -6,16 +6,23 @@ Startup::Application.routes.draw do
     delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :users, :only => [:show, :edit, :update]
-  resources :resources, :except => [:destroy]
+  resources :users, :only => [:show, :edit, :update] do
+    get '/resources' => "resources#index"
+  end
+  resources :resources, :except => [:destroy] do
+    put '/i_want_it' => 'resources#i_want_it'
+  end
 
   namespace :admin do
     get '/dashboard' => "dashboards#index"
     get '/unconfirmed_users' => "users#unconfirmed_users"
+    get '/unapproved_resources' => 'resources#unapproved_resources'
+    get '/my_responsibility' => 'resources#my_responsibility'
     put '/confirm_user/:id' => "users#confirm_user"
     resources :users
     resources :resources
     resources :resource_types
+    resources :admin_categories, :except => [:show]
   end
 
   get '/', :to => "welcomes#index"
