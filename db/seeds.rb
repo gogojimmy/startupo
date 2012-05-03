@@ -7,6 +7,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create!(:email => "admin@startupo.cc", :password => "startupoisawesome",
+             :password_confirmation => "startupoisawesome",
+             :id_no => "A123456789", :name => "startupo", :is_admin => true)
+
 ResourceType.create!(:name => "資金", :description => "資金")
 ResourceType.create!(:name => "團隊", :description => "團隊")
 ResourceType.create!(:name => "供應商", :description => "供應商")
@@ -28,3 +32,12 @@ CooperateWay.create!(:name => "融資", :description => "融資")
 CooperateWay.create!(:name => "尋找執行團隊", :description => "尋找執行團隊")
 CooperateWay.create!(:name => "學術合作", :description => "學術合作")
 CooperateWay.create!(:name => "其他", :description => "其他")
+
+AdminCategory.create!(:name => "找尋資金", :description => "找尋資金")
+AdminCategory.create!(:name => "找尋團隊", :description => "找尋團隊")
+AdminCategory.create!(:name => "找尋製造技術", :description => "找尋製造技術")
+AdminCategory.create!(:name => "找尋相關通路", :description => "找尋相關通路")
+AdminCategory.create!(:name => "找尋營銷策略", :description => "找尋營銷策略")
+AdminCategory.create!(:name => "找尋人脈資源", :description => "找尋人脈資源")
+AdminCategory.create!(:name => "找尋活動配合", :description => "找尋活動配合")
+AdminCategory.create!(:name => "找尋策略聯盟", :description => "找尋策略聯盟")

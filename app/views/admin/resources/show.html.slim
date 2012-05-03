@@ -1,0 +1,46 @@
+head.resource
+  h1= @resource.title
+section.resource
+  div.actions
+    = simple_form_for @resource, :url => admin_resource_path(@resource) do |f|
+      = f.input :assign_to, :label => I18n.t('resource.attributes.assign_to'), :collection => @admins, :as => :select
+      = f.submit I18n.t('resource.assign_to_admin'), :class => 'btn'
+    = simple_form_for @resource, :url => admin_resource_path(@resource) do |f|
+      = f.input :state, :label => I18n.t('resource.attributes.state'), :collection => Resource::STATE.invert, :as => :radio_buttons
+      = f.submit I18n.t('resource.set_state'), :class => 'btn'
+  table.table.table-striped.table-condensed.table-bordered
+    tr
+      td= I18n.t('resource.attributes.user')
+      td.resource_description= @resource.user.name
+    tr
+      td= I18n.t('resource.attributes.description')
+      td.resource_description= @resource.description
+    tr
+      td= I18n.t('resource.attributes.have_resource')
+      td.resource_have_resource= @resource.have_resource
+    tr
+      td= I18n.t('resource.attributes.find_resource')
+      td.resource_find_resource= @resource.find_resource
+    tr
+      td= I18n.t('resource.attributes.contact')
+      td.resource_contact= @resource.contact
+    tr
+      td= I18n.t('resource.attributes.phone')
+      td.resource_phone= @resource.phone
+    tr
+      td= I18n.t('resource.attributes.email')
+      td.resource_email= @resource.email
+    tr
+      td= I18n.t('resource.attributes.privacy')
+      td.resource_state= @resource.privacy
+    tr
+      td= I18n.t('resource.attributes.types')
+      td.resource_types= @resource.types
+    tr
+      td= I18n.t('resource.attributes.cooperate_ways')
+      td.resource_cooperate_ways= @resource.ways
+    tr
+      td= I18n.t('resource.attributes.admin_categories')
+      td.resource_admin_categories= @resource.categories
+section.resource.actions
+  = link_to I18n.t('action.update_this_resource'), edit_admin_resource_path(@resource)

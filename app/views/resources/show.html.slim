@@ -1,0 +1,12 @@
+head.resource
+  h1= @resource.title
+section.resource
+  = show_want_button(@resource, current_user)
+  table.table.table-striped.table-condensed.table-bordered
+    tr
+      td= I18n.t('resource.attributes.title')
+      td.resource_title= @resource.title
+    tr
+      td= I18n.t('resource.attributes.description')
+      td.resource_description= @resource.description
+section.resource.actions

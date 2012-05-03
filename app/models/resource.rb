@@ -29,6 +29,23 @@ class Resource < ActiveRecord::Base
                         :resource_types, :cooperate_ways
   validate :have_or_find_resources
   before_validation :set_state
+
+  def types
+    self.resource_types.map(&:name)
+  end
+
+  def ways
+    self.cooperate_ways.map(&:name)
+  end
+
+  def categories
+    self.admin_categories.map(&:name)
+  end
+
+  def i_want_it(user)
+    ResourceMatcherShip.create!(:user_id => user.id, :resource_id => self.id)
+  end
+
   protected
 
   def have_or_find_resources
