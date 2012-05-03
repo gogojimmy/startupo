@@ -1,0 +1,21 @@
+head.admin_categories
+  h1= I18n.t('admin_category.index')
+hr
+section.admin_categories.row
+  div.span8
+    table.table.table-striped.table-condensed.table-bordered
+      tr
+        th= I18n.t('admin_category.attributes.name')
+        th= I18n.t('admin_category.attributes.description')
+        th= I18n.t('action.edit')
+        th= I18n.t('action.delete')
+      - @categories.each do |category|
+        tr
+          td.admin_category-name= category.name
+          td.admin_category-description= category.description
+          td= link_to I18n.t('action.edit'), edit_admin_admin_category_path(category),
+                                               :class => 'btn'
+          td= link_to I18n.t('action.delete'),
+                              admin_admin_category_path(category),
+                              :method => :delete,
+                              :confirm => "Are you sure?"

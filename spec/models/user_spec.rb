@@ -9,4 +9,5 @@ describe User do
   it { should allow_value("a@b.com").for(:email) }
   it { should_not allow_value("b.com").for(:email) }
   it { should validate_presence_of(:password) }
+  it { should have_many(:resources) }
 end

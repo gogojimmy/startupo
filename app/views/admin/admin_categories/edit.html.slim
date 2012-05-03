@@ -1,0 +1,6 @@
+head
+  h1= I18n.t('admin_category.edit')
+= simple_form_for @category, :url => admin_admin_category_path(@category) do |f|
+  = render :partial => 'form', :locals => {:f => f}
+= link_to I18n.t('admin_category.back_to_index'), admin_admin_categories_path,
+                                                 :class => 'btn'

@@ -1,0 +1,22 @@
+-if f.error_notification
+  div.alert.alert-error.fade.in
+    a.close data-dismiss="alert" href="#" &times;
+    = f.error_notification
+section.resource.form-inputs
+  = f.input :assign_to, :label => I18n.t('resource.attributes.assign_to'), :collection => @admins
+  = f.input :state, :label => I18n.t('resource.attributes.state'), :collection => Resource::STATE.invert
+  = f.input :contract_state, :label => I18n.t('resource.attributes.contract_state'), :collection => Resource::CONTRACT_STATE.invert
+  = f.input :to_public, :label => I18n.t('resource.attributes.to_public')
+  = f.input :title, :label => I18n.t('resource.attributes.title')
+  = f.input :have_resource, :label => I18n.t('resource.attributes.have_resource')
+  = f.input :find_resource, :label => I18n.t('resource.attributes.find_resource')
+  = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name }
+  = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile }
+  = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email }
+  = f.input :description, :label => I18n.t('resource.attributes.description')
+  = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons
+  = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes
+  = f.association :cooperate_ways, :label => I18n.t('resource.attributes.cooperate_ways'), :as => :check_boxes
+  = f.association :admin_categories, :label => I18n.t('resource.attributes.admin_categories'), :as => :check_boxes
+div.form-actions
+  = f.submit I18n.t('action.save'), :class => 'btn btn-primary'

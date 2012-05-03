@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     if @user.confirmed_by.nil?
       flash[:notice] = I18n.t('user.not_yet_confirm')
     end
+    @my_resources = Resource.by_user_id(current_user.id).limit(10)
   end
 
   def edit

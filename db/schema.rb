@@ -11,7 +11,83 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421075855) do
+ActiveRecord::Schema.define(:version => 20120503162612) do
+
+  create_table "admin_categories", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "cooperate_ways", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "resource_admin_category_ships", :force => true do |t|
+    t.integer  "resource_id"
+    t.integer  "admin_category_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "resource_cooperate_way_ships", :force => true do |t|
+    t.integer  "resource_id"
+    t.integer  "cooperate_way_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "resource_cooperate_way_ships", ["cooperate_way_id"], :name => "index_resource_cooperate_way_ships_on_cooperate_way_id"
+  add_index "resource_cooperate_way_ships", ["resource_id"], :name => "index_resource_cooperate_way_ships_on_resource_id"
+
+  create_table "resource_matcher_ships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "resource_type_ships", :force => true do |t|
+    t.integer  "resource_id"
+    t.integer  "resource_type_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "resource_type_ships", ["resource_id"], :name => "index_resource_type_ships_on_resource_id"
+  add_index "resource_type_ships", ["resource_type_id"], :name => "index_resource_type_ships_on_resource_type_id"
+
+  create_table "resource_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "description"
+  end
+
+  create_table "resources", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "have_resource"
+    t.boolean  "find_resource"
+    t.string   "contact"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "description"
+    t.string   "state"
+    t.boolean  "to_public",      :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "assign_to"
+    t.string   "title"
+    t.string   "privacy"
+    t.string   "contract_state"
+  end
+
+  add_index "resources", ["assign_to"], :name => "index_resources_on_approved_by"
+  add_index "resources", ["user_id"], :name => "index_resources_on_user_id"
 
   create_table "users", :force => true do |t|
     t.boolean  "is_admin",               :default => false

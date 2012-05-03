@@ -1,0 +1,15 @@
+head.resources
+  h1= I18n.t('resource.index')
+hr
+section.resource.row
+  div.span8
+    = link_to I18n.t('action.make_request'), new_resource_path, :class => 'btn btn-large btn-success'
+    table.table.table-striped.table-condensed.table-bordered
+      tr
+        th= I18n.t('resource.attributes.title')
+        th= I18n.t('resource.attributes.description')
+      - @resources.each do |resource|
+        tr
+          td.resource_type-name= link_to resource.title, resource_path(resource)
+          td.resource_type-description= resource.description
+    =will_paginate
