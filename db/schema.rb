@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501055219) do
+ActiveRecord::Schema.define(:version => 20120503162612) do
 
   create_table "admin_categories", :force => true do |t|
     t.string   "name"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(:version => 20120501055219) do
   add_index "resource_cooperate_way_ships", ["cooperate_way_id"], :name => "index_resource_cooperate_way_ships_on_cooperate_way_id"
   add_index "resource_cooperate_way_ships", ["resource_id"], :name => "index_resource_cooperate_way_ships_on_resource_id"
 
+  create_table "resource_matcher_ships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "resource_type_ships", :force => true do |t|
     t.integer  "resource_id"
     t.integer  "resource_type_id"
@@ -70,13 +77,16 @@ ActiveRecord::Schema.define(:version => 20120501055219) do
     t.string   "email"
     t.text     "description"
     t.string   "state"
-    t.boolean  "to_public",     :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.integer  "approved_by"
+    t.boolean  "to_public",      :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "assign_to"
+    t.string   "title"
+    t.string   "privacy"
+    t.string   "contract_state"
   end
 
-  add_index "resources", ["approved_by"], :name => "index_resources_on_approved_by"
+  add_index "resources", ["assign_to"], :name => "index_resources_on_approved_by"
   add_index "resources", ["user_id"], :name => "index_resources_on_user_id"
 
   create_table "users", :force => true do |t|

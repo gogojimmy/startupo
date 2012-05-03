@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_many :resources
+  has_many :resource_matcher_ships
+  has_many :match_resources, :class_name => Resource,
+           :through => :resource_matcher_ships
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :id_no, :mobile, :company, :title, :address, :name,
@@ -10,6 +14,7 @@ class User < ActiveRecord::Base
                       :with => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   validates_presence_of :email, :name
   scope :unconfirmed_users, where(:confirmed_by => nil)
+  scope :admins, where(:is_admin => true)
 
   def integrety
     has_value = 0.0
