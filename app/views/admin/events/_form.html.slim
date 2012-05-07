@@ -1,0 +1,20 @@
+-if f.error_notification
+  div.alert.alert-error.fade.in
+    a.close data-dismiss="alert" href="#" &times;
+    = f.error_notification
+section.event.form-inputs
+  = f.input :name, :label => I18n.t('event.attributes.name')
+  = f.input :description, :label => I18n.t('event.attributes.description')
+  = f.input :start_time, :label => I18n.t('event.attributes.start_time')
+  = f.input :end_time, :label => I18n.t('event.attributes.end_time')
+  = f.input :address, :label => I18n.t('event.attributes.address')
+  = f.simple_fields_for :images do |p|
+    - if p.object.new_record?
+      = p.input :image, :label => I18n.t('image.attributes.image'), :as => :file
+    - else
+      = image_tag(p.object.image.url(:thumb))
+  = f.simple_fields_for :assets do |z|
+    = z.input :asset, :label => I18n.t('asset.attributes.file'), :as => :file
+div.form-actions
+  = f.submit I18n.t('action.save'), :class => 'btn btn-primary'
+

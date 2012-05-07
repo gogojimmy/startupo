@@ -12,6 +12,9 @@ Startup::Application.routes.draw do
   resources :resources, :except => [:destroy] do
     put '/i_want_it' => 'resources#i_want_it'
   end
+  resources :events, :only => [:index, :show] do
+    put '/join' => 'events#join'
+  end
 
   namespace :admin do
     get '/dashboard' => "dashboards#index"
@@ -23,6 +26,9 @@ Startup::Application.routes.draw do
     resources :resources
     resources :resource_types
     resources :admin_categories, :except => [:show]
+    resources :events do
+      get '/attendees' => 'event#attendees'
+    end
   end
 
   get '/', :to => "welcomes#index"
