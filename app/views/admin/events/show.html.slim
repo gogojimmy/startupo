@@ -1,0 +1,34 @@
+head.event
+  h1= @event.name
+section.event.row
+  div.span8
+    table.table.table-striped.table-condensed.table-bordered.event-basic-info
+      tr
+        td= I18n.t('event.attributes.user')
+        td.event_description= @event.user.name
+      tr
+        td= I18n.t('event.attributes.description')
+        td.event_description= @event.description
+      tr
+        td= I18n.t('event.attributes.duration')
+        td.event_description= "#{I18n.l(@event.start_time)} #{I18n.t('to')} #{I18n.l(@event.end_time)}"
+    div.event-images
+      - @event.images.each do |image|
+        = image_tag(image.image.url(:medium), :class => "image")
+    div.map
+      h2= I18n.t('event.attributes.address')
+      = @event.address
+      br
+      = link_to(image_tag(show_google_map(@event.latitude, @event.longitude), :id => "google-static-map"), link_to_google_map(@event.latitude, @event.longitude), :target => "_blank")
+    div.event-files
+      - @event.assets.each do |asset|
+        = link_to "#{I18n.t('action.download')} #{asset.attachment_file_name}", asset.file.url
+  div.span4
+    div.attendees.well
+      head
+        h1 #{I18n.t('event.attributes.attendees')} #{show_badge(@event.attendees.count)}
+      div.attendees
+        - @event.attendees[0..10].each do |attendee|
+          = link_to attendee.name, user_path(attendee)
+section.event.actions
+  = link_to I18n.t('event.update_this_event'), edit_admin_event_path(@event), :class => 'btn btn-primary'

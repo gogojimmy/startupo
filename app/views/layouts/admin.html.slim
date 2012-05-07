@@ -27,9 +27,11 @@ html lang="ZH"
               li
                 a href="/admin/my_responsibility" #{I18n.t('admin.dashboard.my_responsibility')}
               li
-                a href="#" #{I18n.t('resources')}
+                a href="/admin/resources" #{I18n.t('resources')}
               li
-                a href="#" #{I18n.t('events')}
+                a href="/admin/events" #{I18n.t('events')}
+              li
+                a href="/admin/events?available=true" #{I18n.t('available_events')}
           - if current_user
             = render :partial => 'shared/login_nav'
           - else

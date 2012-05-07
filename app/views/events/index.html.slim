@@ -1,0 +1,18 @@
+head.events
+  h1= I18n.t('event.index')
+hr
+section.event.row
+  div.span8
+    - @events.each do |event|
+      div.event
+        div.event-date
+          h2= event.start_time.to_date
+        div.event-pople
+          p= I18n.t('event.attributes.attendees')
+          = event.attendees.count
+        div.event-name
+          h3= link_to event.name, admin_event_path(event)
+        div.event-join
+          = link_to I18n.t('event.action.count_me_in'), event_join_path(event), :class => 'btn btn-primary'
+      hr
+    =will_paginate

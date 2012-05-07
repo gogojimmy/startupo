@@ -29,7 +29,7 @@ html lang="ZH"
               li
                 a href="/resources" #{I18n.t('resources')}
               li
-                a href="#" #{I18n.t('events')}
+                a href="/events" #{I18n.t('events')}
           - if current_user
             = render :partial => 'shared/login_nav'
           - else

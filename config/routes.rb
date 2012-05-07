@@ -12,6 +12,9 @@ Startup::Application.routes.draw do
   resources :resources, :except => [:destroy] do
     put '/i_want_it' => 'resources#i_want_it'
   end
+  resources :events, :only => [:index, :show] do
+    put '/join' => 'events#join'
+  end
 
   namespace :admin do
     get '/dashboard' => "dashboards#index"
@@ -20,9 +23,17 @@ Startup::Application.routes.draw do
     get '/my_responsibility' => 'resources#my_responsibility'
     put '/confirm_user/:id' => "users#confirm_user"
     resources :users
-    resources :resources
+    resources :resources do
+      get '/matchers' => 'resources#matchers'
+      put '/match' => 'resources#match'
+      get '/add_matcher' => 'resources#add_matcher'
+      put '/update_matchers' => 'resources#update_matchers'
+    end
     resources :resource_types
     resources :admin_categories, :except => [:show]
+    resources :events do
+      get '/attendees' => 'event#attendees'
+    end
   end
 
   get '/', :to => "welcomes#index"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503162612) do
+ActiveRecord::Schema.define(:version => 20120506164749) do
 
   create_table "admin_categories", :force => true do |t|
     t.string   "name"
@@ -20,12 +20,63 @@ ActiveRecord::Schema.define(:version => 20120503162612) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "assets", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "event_id"
+  end
+
+  add_index "assets", ["event_id"], :name => "index_assets_on_event_id"
+
   create_table "cooperate_ways", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "address"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "event_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "images", ["event_id"], :name => "index_images_on_event_id"
+
+  create_table "join_event_attendee_ships", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "join_event_attendee_ships", ["event_id"], :name => "index_join_event_attendee_ships_on_event_id"
+  add_index "join_event_attendee_ships", ["user_id"], :name => "index_join_event_attendee_ships_on_user_id"
 
   create_table "resource_admin_category_ships", :force => true do |t|
     t.integer  "resource_id"
@@ -47,8 +98,10 @@ ActiveRecord::Schema.define(:version => 20120503162612) do
   create_table "resource_matcher_ships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "resource_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "type"
+    t.string   "status",      :default => "pending"
   end
 
   create_table "resource_type_ships", :force => true do |t|
