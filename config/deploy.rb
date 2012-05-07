@@ -13,6 +13,8 @@ set :use_sudo, false
 set :stages, %(staging production)
 set :default_stage, "staging"
 
+default_run_options[:pty] = true
+
 #set :whenever_command, "bundle exec whenever"
 #set :whenever_environment, defer { stage }
 #require "whenever/capistrano"
