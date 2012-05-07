@@ -12,6 +12,9 @@ class Resource < ActiveRecord::Base
   has_many :admin_categories, :through => :resource_admin_category_ships
 
   scope :public_resources, where(:to_public => true)
+  scope :private_resources, where(:to_public => false)
+  scope :by_state, lambda{ |state| where(:state => state) }
+  scope :by_contract, lambda{ |contract| where(:contract_state => contract) }
   scope :unapproved, where(:assign_to => nil)
   scope :my_responsibility, lambda{ |user| where(:assign_to => user) }
   scope :by_user_id, lambda{ |user_id| where(:user_id => user_id) }
@@ -30,6 +33,14 @@ class Resource < ActiveRecord::Base
   validate :have_or_find_resources
   before_validation :set_state
 
+  def self.by_category(category)
+    Resource.joins(:admin_categories).where(:admin_categories => {:name => category})
+  end
+
+  def self.by_cooperate_way(way)
+    Resource.joins(:coorperate_ways).where(:coorperate_ways => {:name => way})
+  end
+
   def types
     self.resource_types.map(&:name)
   end
@@ -44,6 +55,17 @@ class Resource < ActiveRecord::Base
 
   def i_want_it(user)
     ResourceMatcherShip.create!(:user_id => user.id, :resource_id => self.id)
+  end
+
+  def update_match_status(user_id, status)
+    match_ship = self.resource_matcher_ships.where(:user_id => user_id).first
+
+    case status
+    when 'deny'
+      match_ship.destroy
+    else
+      match_ship.update_attribute(:status, status)
+    end
   end
 
   protected

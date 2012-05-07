@@ -1,0 +1,18 @@
+article.row
+  head
+    h1 #{@resource.title} #{I18n.t('s')} #{I18n.t('resource.attributes.matchers')}
+  hr
+  = link_to I18n.t('resource.matcher.add'), admin_resource_add_matcher_path(@resource), :class => 'btn btn-primary'
+  hr
+  table.table.table-bordered.table-striped.table-condensed
+    thead
+      tr
+        td= I18n.t('resource.matcher.statuses')
+        td= I18n.t('resource.attributes.matcher')
+        td= I18n.t('action.actions')
+    tbody
+    - @matchers.each do |matcher|
+      tr
+        td= I18n.t("resource.matcher.status.#{matcher.match_status(@resource)}")
+        td= link_to matcher.name, admin_user_path(matcher)
+        td #{link_to I18n.t('resource.matcher.match_it'), admin_resource_match_path(@resource, :status => 'matched', :matcher => matcher), :method => :put, :class => 'btn btn-success'} | #{link_to I18n.t('resource.matcher.deny_it'), admin_resource_match_path(@resource, :status => 'deny', :matcher => matcher), :method => :put, :class => 'btn btn-danger'} | #{link_to I18n.t('resource.matcher.contact_it'), admin_resource_match_path(@resource, :status => 'contacting', :matcher => matcher), :method => :put, :class => 'btn btn-primary'}

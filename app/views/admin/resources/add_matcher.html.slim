@@ -1,0 +1,7 @@
+article.row
+  head
+    h1 #{@resource.title} #{I18n.t('s')} #{I18n.t('resource.matcher.add')}
+  hr
+  = simple_form_for @resource, :url => admin_resource_update_matchers_path(@resource), :html => {:class => 'form-horizontal'} do |f|
+    = f.association :matchers, :label => I18n.t('resource.matcher.choose_matcher'), :collection => @users, :as => :check_boxes
+    = f.submit I18n.t('action.save'), :class => 'btn btn-primary'

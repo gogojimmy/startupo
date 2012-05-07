@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_many :resource_matcher_ships
   has_many :match_resources, :class_name => Resource,
            :through => :resource_matcher_ships
+  has_many :events
+  has_many :join_event_attendee_ships
+  has_many :join_events, :class_name => Event,
+           :through => :join_event_attendee_ships
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :id_no, :mobile, :company, :title, :address, :name,
@@ -22,6 +26,16 @@ class User < ActiveRecord::Base
                   :email, :id_no]
     attributes.each { |attr| has_value += 1 unless self.try(attr).blank? }
     (has_value/attributes.size.to_f*100).to_i
+  end
+
+  def match_date(resource)
+    ResourceMatcherShip.where(:user_id => self.id, :resource_id => resource.id).
+                              first.created_at.to_date
+  end
+
+  def match_status(resource)
+    ResourceMatcherShip.where(:user_id => self.id, :resource_id => resource.id).
+                              first.status
   end
 
 end

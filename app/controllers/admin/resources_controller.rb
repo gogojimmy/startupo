@@ -51,4 +51,27 @@ class Admin::ResourcesController < ApplicationController
                           paginate(:page => params[:page])
   end
 
+  def matchers
+    @resource = Resource.find(params[:resource_id])
+    @matchers = @resource.matchers
+  end
+
+  def match
+    @resource = Resource.find(params[:resource_id])
+    if @resource.update_match_status(params[:matcher], params[:status])
+      flash[:notice] = I18n.t('action.update_successful')
+    end
+    redirect_to admin_resource_matchers_path(@resource)
+  end
+
+  def add_matcher
+    @resource = Resource.find(params[:resource_id])
+    @matchers = User.all
+  end
+
+  def update_matchers
+    @resource = Resource.find(params[:resource_id])
+    @resource.add_matcher()
+  end
+
 end

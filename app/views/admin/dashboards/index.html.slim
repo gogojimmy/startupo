@@ -43,4 +43,15 @@ div.dashboard.row
       = link_to I18n.t('action.show_more'), admin_my_responsibility_path
   section.avaliable_events.span3.well
     head
-      h1 #{I18n.t('admin.dashboard.events')} #{show_badge()}
+      h1 #{I18n.t('admin.dashboard.events')} #{show_badge(Event.available.count)}
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            td= I18n.t('admin.dashboard.event_name')
+            td= I18n.t('event.attributes.attendees')
+        tbody
+        - @events.each do |event|
+          tr
+            td= link_to event.name, admin_event_path(event)
+            td= event.attendees.count
+      = link_to I18n.t('action.show_more'), admin_events_path(:available => true)

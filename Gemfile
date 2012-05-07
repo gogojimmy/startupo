@@ -31,6 +31,7 @@ gem 'slim'
 gem 'haml2slim'
 gem 'devise'
 gem 'will_paginate'
+gem 'geocoder'
 
 # Deploy with Capistrano
 gem 'capistrano'
