@@ -1,9 +1,14 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 require 'capistrano_colors'
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require "rvm/capistrano"
+
+set :rvm_ruby_string, 'ruby-1.9.3-p125'
+set :rvm_type, :user
 
 set :application, "startupo"
-set :repository,  "git@github.com:gogojimmy/Startupo.cc.git"
+set :repository,  "git@github.com:gogojimmy/startupo.git"
 
 set :scm, :git
 set :deploy_via, :remote_cache
@@ -14,10 +19,7 @@ set :stages, %(staging production)
 set :default_stage, "staging"
 
 default_run_options[:pty] = true
-
-#set :whenever_command, "bundle exec whenever"
-#set :whenever_environment, defer { stage }
-#require "whenever/capistrano"
+ssh_options[:forward_agent] = true
 
 namespace :deploy do
   task :start do ; end
@@ -30,11 +32,6 @@ namespace :deploy do
     run "cp #{shared_path}/config/*.yml #{release_path}/config/"
   end
 
-  #task :generate_yard, :roles => [:app] do
-    #run "cd #{current_path} && yard"
-    #run "rm -rf /home/staging/api/current/public/locomote"
-    #run "mv #{current_path}/doc /home/staging/api/current/public/locomote"
-  #end
 end
 
 task :tail_log, :roles => :app do
@@ -42,10 +39,9 @@ task :tail_log, :roles => :app do
 end
 
 before "deploy:assets:precompile", "deploy:custom_setup"
+before 'deploy:setup', 'rvm:install_rvm'
 
 after "deploy", "deploy:cleanup"
-after "deploy", "deploy:generate_yard"
 
 after "deploy:migrations", "deploy:cleanup"
 after "deploy:migrations", "deploy:generate_yard"
-

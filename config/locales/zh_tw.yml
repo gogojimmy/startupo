@@ -42,6 +42,9 @@ zh_tw:
     incoming_event: '最近一次的活動'
     change_password: '修改密碼'
     not_yet_confirm: '您的帳號尚未確認，請耐心等候'
+    forget_your_password?: '忘記你的密碼?'
+    email: 'Email'
+    send_me_reset_password_instructions: '寄送重設密碼信給我'
     devise:
       sign_up: '加入史塔波'
       sign_in: '登入'

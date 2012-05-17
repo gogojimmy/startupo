@@ -37,6 +37,7 @@ gem 'geocoder'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'capistrano_colors'
+gem 'rvm-capistrano'
 
 group :development, :test do
   gem 'rspec'

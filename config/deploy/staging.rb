@@ -1,5 +1,5 @@
 set :rails_env, "staging"
-set :user, "deployer"
+set :user, "staging"
 set :domain, "staging.startupo.cc"
 set :branch, "develop"
 
