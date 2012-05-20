@@ -5,7 +5,7 @@ h2= I18n.t('user.devise.sign_up')
     = f.input :email, :label => I18n.t('user.attributes.email'), :required => true, :autofocus => true
     = f.input :password, :label => I18n.t('user.attributes.password'), :required => true
     = f.input :password_confirmation, :label => I18n.t('user.attributes.password_confirmation'), :required => true
-    = f.input :birthday, :label => I18n.t('user.attributes.birthday'), :required => true
+    = f.input :birthday, :label => I18n.t('user.attributes.birthday'), :required => true, :start_year => 1950, :end_year => Time.now.year - 18
     = f.input :name, :label => I18n.t('user.attributes.name'), :required => true
     = f.input :id_no, :label => I18n.t('user.attributes.id_no')
     = f.input :mobile, :label => I18n.t('user.attributes.mobile'), :required => true
