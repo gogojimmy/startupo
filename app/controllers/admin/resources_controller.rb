@@ -31,7 +31,6 @@ class Admin::ResourcesController < ApplicationController
   end
 
   def update
-    ap "here?"
     @resource = Resource.find(params[:id])
     if @resource.update_attributes(params[:resource])
       flash[:notice] = I18n.t('resource.message.update_successful')
