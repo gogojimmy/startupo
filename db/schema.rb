@@ -36,11 +36,13 @@ ActiveRecord::Schema.define(:version => 20120523175945) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "resource_id"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
+  add_index "comments", ["resource_id"], :name => "index_comments_on_resource_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "cooperate_ways", :force => true do |t|
