@@ -158,6 +158,9 @@ zh_tw:
   asset:
     attributes:
       file: '附件'
+  comment:
+    update_message: "%{user} 將 %{attr} 從 %{from} 更改為 %{to}"
+    created_successful: '留言新增成功'
   date:
     abbr_day_names:
     - 日

@@ -28,6 +28,7 @@ Startup::Application.routes.draw do
       put '/match' => 'resources#match'
       get '/add_matcher' => 'resources#add_matcher'
       put '/update_matchers' => 'resources#update_matchers'
+      resources :comments, :only => [:create]
     end
     resources :resource_types
     resources :admin_categories, :except => [:show]

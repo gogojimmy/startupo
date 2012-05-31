@@ -10,6 +10,7 @@ class Resource < ActiveRecord::Base
   has_many :cooperate_ways, :through => :resource_cooperate_way_ships
   has_many :resource_admin_category_ships
   has_many :admin_categories, :through => :resource_admin_category_ships
+  has_many :comments
 
   scope :public_resources, where(:to_public => true)
   scope :private_resources, where(:to_public => false)
@@ -32,6 +33,17 @@ class Resource < ActiveRecord::Base
                         :resource_types, :cooperate_ways
   validate :have_or_find_resources
   before_validation :set_state
+
+  def update_comment(user)
+    self.changes.each do |attr, value|
+      self.comments.create(:user => user,
+                           :content => I18n.t('comment.update_message',
+                                              :user => user.name,
+                                              :attr => I18n.t("resource.attributes.#{attr}"),
+                                              :from => value[0],
+                                              :to => value[1]))
+    end
+  end
 
   def self.by_category(category)
     Resource.joins(:admin_categories).where(:admin_categories => {:name => category})

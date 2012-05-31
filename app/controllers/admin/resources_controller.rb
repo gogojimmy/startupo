@@ -32,7 +32,10 @@ class Admin::ResourcesController < ApplicationController
 
   def update
     @resource = Resource.find(params[:id])
-    if @resource.update_attributes(params[:resource])
+    @resource.assign_attributes(params[:resource])
+    if  @resource.valid?
+      @resource.update_comment(current_user)
+      @resource.save
       flash[:notice] = I18n.t('resource.message.update_successful')
       redirect_to admin_resource_path(@resource)
     else
@@ -43,6 +46,7 @@ class Admin::ResourcesController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
     @admins = User.admins
+    @comment = Comment.new(:resource => @resource)
   end
 
   def my_responsibility
