@@ -34,6 +34,17 @@ class Resource < ActiveRecord::Base
   validate :have_or_find_resources
   before_validation :set_state
 
+  def update_comment(user)
+    self.changes.each do |attr, value|
+      self.comments.create(:user => user,
+                           :content => I18n.t('comment.update_message',
+                                              :user => user.name,
+                                              :attr => I18n.t("resource.attributes.#{attr}"),
+                                              :from => value[0],
+                                              :to => value[1]))
+    end
+  end
+
   def self.by_category(category)
     Resource.joins(:admin_categories).where(:admin_categories => {:name => category})
   end

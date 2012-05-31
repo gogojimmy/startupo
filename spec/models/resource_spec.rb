@@ -12,7 +12,7 @@ describe Resource do
                 through(:resource_admin_category_ships) }
   it { should have_many(:comments) }
 
-  it "should create comment" do
+  it "should create comment after resource created" do
     user = Factory :user
     expect { user.resources.create!(:privacy => 'public', :title => 'blah',
                                     :contact => 'user', :phone => '123',
@@ -21,5 +21,11 @@ describe Resource do
                                     :resource_types => ResourceType.first,
                                     :cooperate_ways => CooperateWay.first) }.to
                                     change { Comment.count }.by(1)
+  end
+
+  it "should create comment after resource updated" do
+    user = Factory :user
+    resource = Factory :resource, :user => user
+    expect { resource.update_comment(user) }.to change { Comment.count }.by(1)
   end
 end

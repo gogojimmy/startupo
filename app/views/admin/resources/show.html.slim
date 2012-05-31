@@ -1,13 +1,14 @@
 head.resource
   h1= @resource.title
+hr
 section.resource.row
   div.span8
     div.actions
-      = simple_form_for @resource, :url => admin_resource_path(@resource) do |f|
+      = simple_form_for @resource, :url => admin_resource_path(@resource), :html => {:class => 'form-inline'} do |f|
         = f.input :assign_to, :label => I18n.t('resource.attributes.assign_to'), :collection => @admins, :as => :select
         = f.submit I18n.t('resource.assign_to_admin'), :class => 'btn'
       = simple_form_for @resource, :url => admin_resource_path(@resource) do |f|
-        = f.input :state, :label => I18n.t('resource.attributes.state'), :collection => Resource::STATE.invert, :as => :radio_buttons
+        = f.input :state, :label => I18n.t('resource.attributes.state'), :collection => Resource::STATE.invert, :as => :radio_buttons, :item_wrapper_class =>  'inline'
         = f.submit I18n.t('resource.set_state'), :class => 'btn'
     table.table.table-striped.table-condensed.table-bordered
       tr
@@ -43,6 +44,24 @@ section.resource.row
       tr
         td= I18n.t('resource.attributes.admin_categories')
         td.resource_admin_categories= @resource.categories
+    hr
+    div.comments.row
+      head
+        h2 處理記錄
+      section.span8
+        = simple_form_for [:admin, @resource, @comment] do |f|
+          = f.input :content, :label => false, :placeholder => '留言', :input_html => {:rows => 3, :class => 'span8'}
+          = f.submit '留言', :class => 'btn btn-success'
+        - @resource.comments.each do |comment|
+          div.comment.well
+            div.comment-attr
+              div.comment-author
+                strong= comment.user_name
+              div.comment-timestamp.pull-right
+                small 發佈於 #{comment.created_at.strftime('%Y/%m/%d %H:%M')}
+            hr
+            div.content
+              = simple_format comment.content
   aside.resource.span4
     div.resource.actions.well
       head
