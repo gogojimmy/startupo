@@ -21,7 +21,8 @@ html lang="ZH"
       div.navbar-inner
         div.container
           a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
-          a.brand href="/" #{I18n.t('brand')}
+          a.brand href="/"
+            = image_tag('images/logo.png')
           div.nav-collapse
             ul.nav
               li
