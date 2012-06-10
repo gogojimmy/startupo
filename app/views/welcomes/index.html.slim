@@ -1,7 +1,28 @@
 article.row
   header
-    div class="span8"
-      img src="http://placehold.it/600x300"
-    div class="signup span4"
-      h1 歡迎來到史塔波
-      = link_to I18n.t('user.devise.sign_up'), new_user_registration_path, :class => 'btn btn-success btn-large'
+    div.span8
+      div.hero-unit
+        h1 STARTUPO
+        hr
+        p
+          | 史塔波，就是 Startup all 的意思，史塔波是讓您夢想啟動的平台，startup all your mind or startup all your ideas. 把我們的資源和夢想放上來，讓朋友們一起啟動夢想的資源
+  section.upcoming-event.span4
+    div.well.well-color
+      head
+        h1 最新活動
+      hr
+        -@upcoming_events.each do |event|
+          div.welcome-events
+            div.span1.welcome-event-date
+              = l event.start_time, :format => '%B %C'
+            div.span2.welcome-event-name
+              = link_to event.name, event_path(event)
+  section.past-events.span12
+    div.carousel.slide
+      div.carousel-inner
+        div.item
+          = image_tag('images/slides/slide1.jpg')
+        div.item
+          = image_tag('images/slides/slide2.jpg')
+        div.item
+          = image_tag('images/slides/slide3.jpg')
