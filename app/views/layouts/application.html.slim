@@ -9,13 +9,29 @@ html lang="ZH"
       title= "#{I18n.t('brand')}"
     link href="/assets/compass/screen.css" media="screen, projection" rel="stylesheet" type="text/css"
     link href="/assets/compass/print.css" media="print" rel="stylesheet" type="text/css"
+    link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet"
     /[ if lt IE 9 ]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+      link rel="stylesheet" href="/assets/font-awesome/css/font-awesome-ie7.css"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
     meta name="viewport" content="width=device-width" initial-scale="1.0"
     meta charset="UTF-8"
+    - if Rails.env.production?
+      | <script type="text/javascript">
+      |
+      |   var _gaq = _gaq || [];
+      |   _gaq.push(['_setAccount', 'UA-32716291-1']);
+      |   _gaq.push(['_trackPageview']);
+      |
+      |   (function() {
+      |     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      |     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      |     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      |   })();
+      |
+      | </script>
   body
     nav.navbar.navbar-fixed
       div.navbar-inner

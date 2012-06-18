@@ -3,15 +3,15 @@
     a.close data-dismiss="alert" href="#" &times;
     = f.error_notification
 section.resource.form-inputs
-  = f.input :title, :label => I18n.t('resource.attributes.title')
+  = f.input :title, :label => I18n.t('resource.attributes.title'), :input_html => {:class => 'resource-inputs', 'data-content' => '請定義您的資源名稱,例如: 某地稀土協尋買家, 某技術找尋資金', 'data-original-title' => '資源名稱如何寫？'}
   = f.input :have_resource, :label => I18n.t('resource.attributes.have_resource')
   = f.input :find_resource, :label => I18n.t('resource.attributes.find_resource')
-  = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name }
-  = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile }
-  = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email }
-  = f.input :description, :label => I18n.t('resource.attributes.description')
-  = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons
-  = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes
-  = f.association :cooperate_ways, :label => I18n.t('resource.attributes.cooperate_ways'), :as => :check_boxes
+  = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name, :class => 'resource-inputs', 'data-content' => '史塔波平台在收到您的需求時會和您電話聯絡,若您需要提供另外的聯絡人,請在此告知我們', 'data-original-title' => '聯絡人該如何寫？' }
+  = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile, :class => 'resource-inputs', 'data-content' => '若您提供的聯絡電話非資料中提供的,請在此告知我們', 'data-original-title' => '聯絡電話該如何寫？'}
+  = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email, :class => 'resource-inputs', 'data-content' => '若您提供的Email非資料中提供的,請在此告知我們', 'data-original-title' => 'Email 該如何寫？' }
+  = f.input :description, :label => I18n.t('resource.attributes.description'), :input_html => {:class => 'resource-inputs', 'data-content' => '史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請詳細敍述您想找的資源', 'data-original-title' => '資源描述該怎麼寫？', :rows => 5}
+  = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons, :item_wrapper_class =>'inline', :hint => '您可以選擇資源公開於網站上,或針對特定族群發佈'
+  = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes, :item_wrapper_class =>'inline', :hint => ' 史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請先定義您的資源內容, 可以複選'
+  = f.association :cooperate_ways, :label => I18n.t('resource.attributes.cooperate_ways'), :as => :check_boxes, :item_wrapper_class =>'inline', :hint => '史塔波平台提供以下合作方式, 請選擇您覺得適當的方式, 勾選, 可複選 : 個案配合/代銷/加盟/貿易/委託製造/技術合作/融資/尋找執行團隊/學術合作/其他(70字元)'
 div.form-actions
   = f.submit I18n.t('action.save'), :class => 'btn btn-primary'

@@ -1,0 +1,36 @@
+.event-date {
+  display: inline-block;
+  width: 90px;
+}
+
+.event-name {
+  display: inline-block;
+}
+
+.event-location {
+  small {
+    color: grey;
+  }
+}
+
+.event-join {
+  text-align: center;
+  h2 {
+    display: block;
+    font-size: 3.5em;
+    color: #B90E0E;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.event-main-title {
+  color: #B90E0E;
+  margin-bottom: 50px;
+}
+
+.event-action {
+  margin-bottom: 20px;
+}
+
+.event-images { text-align: center; }

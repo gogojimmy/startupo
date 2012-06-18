@@ -6,9 +6,12 @@ module ResourcesHelper
                   resource_i_want_it_path(resource), :class => 'btn',
                   :disabled => true
     else
-      link_to I18n.t('resource.i_want_it'),
-                  resource_i_want_it_path(resource), :class => 'btn',
-                  :method => :put
+      link_to resource_i_want_it_path(resource),
+              :class => 'btn btn-danger btn-large span4 i-want-it',
+              :method => :put do
+                tag("span", :class => 'icon-ok')
+                I18n.t('resource.i_want_it')
+              end
     end
   end
 

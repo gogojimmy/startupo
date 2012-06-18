@@ -7,3 +7,6 @@ ul class="nav pull-right"
         a href="/users/#{current_user.id}"
           i.icon-user
           | #{I18n.t('user.dashboard.manage_my_profile')}
+  li= link_to destroy_user_session_path, :method => :delete do
+    |  登出
+    i.icon-signout

@@ -1,10 +1,22 @@
+@import url(http://fonts.googleapis.com/css?family=Ceviche+One);
+
+h1.startupo-highlight {
+  font-family: 'Ceviche One', cursive;
+  color: #C30202;
+  font-size: 5em;
+}
+
+h3.startupo-des {
+  color: #C30202;
+}
+
 .upcoming-event {
-  h1 {
+  h2 {
     color: #C30202;
   }
   .well-color {
-    background-color: #F0EFE7;
-    height: 270px;
+    background-color: #D8ECF9;
+    height: 310px;
   }
   .welcome-events {
     margin-bottom: 5px;

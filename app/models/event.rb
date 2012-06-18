@@ -16,4 +16,8 @@ class Event < ActiveRecord::Base
   def join(user)
     JoinEventAttendeeShip.create!(:user_id => user.id, :event_id => self.id)
   end
+
+  def first_image
+    self.images.first.image
+  end
 end
