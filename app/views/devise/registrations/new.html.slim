@@ -1,0 +1,17 @@
+h2= I18n.t('user.devise.sign_up')
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = f.error_notification
+  .inputs
+    = f.input :email, :label => I18n.t('user.attributes.email'), :required => true, :autofocus => true
+    = f.input :password, :label => I18n.t('user.attributes.password'), :required => true
+    = f.input :password_confirmation, :label => I18n.t('user.attributes.password_confirmation'), :required => true
+    = f.input :birthday, :label => I18n.t('user.attributes.birthday'), :required => true, :start_year => 1950, :end_year => Time.now.year - 18
+    = f.input :name, :label => I18n.t('user.attributes.name'), :required => true
+    = f.input :id_no, :label => I18n.t('user.attributes.id_no')
+    = f.input :mobile, :label => I18n.t('user.attributes.mobile'), :required => true
+    = f.input :company, :label => I18n.t('user.attributes.company')
+    = f.input :title, :label => I18n.t('user.attributes.title')
+    = f.input :address, :label => I18n.t('user.attributes.address')
+  .actions
+    = f.button :submit, I18n.t('user.devise.sign_up'), :class => 'btn btn-success'
+= render "links"

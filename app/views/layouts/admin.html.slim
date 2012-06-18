@@ -1,0 +1,52 @@
+doctype html
+html lang="ZH"
+  head
+    -if user_signed_in?
+      title= "#{I18n.t('brand')} #{I18n.t('brand_description')}"
+    -elsif @title
+      title= "#{I18n.t('brand')} | #{I18n.t(@title)}"
+    -else
+      title= "#{I18n.t('brand')}"
+    link href="/assets/compass/screen.css" media="screen, projection" rel="stylesheet" type="text/css"
+    link href="/assets/compass/print.css" media="print" rel="stylesheet" type="text/css"
+    /[ if lt IE 9 ]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    meta name="viewport" content="width=device-width" initial-scale="1.0"
+    meta charset="UTF-8"
+  body
+    nav.navbar.navbar-fixed
+      div.navbar-inner
+        div.container
+          a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
+          a.brand href="/"
+            = image_tag('/images/logo.png', :size => '150x25')
+          div.nav-collapse
+            ul.nav
+              li
+                a href="/admin/my_responsibility" #{I18n.t('admin.dashboard.my_responsibility')}
+              li
+                a href="/admin/resources" #{I18n.t('resources')}
+              li
+                a href="/admin/events" #{I18n.t('events')}
+              li
+                a href="/admin/events?available=true" #{I18n.t('available_events')}
+          - if current_user
+            = render :partial => 'shared/login_nav'
+          - else
+            = render :partial => 'shared/not_login_nav'
+    section.container
+      - flash.each do |name, msg|
+        div{class="alert alert-#{name == :notice ? "success" : "error"}"}
+          a.close data-dismiss="alert" &times;
+          = simple_format(msg)
+      article
+        = yield
+      hr
+        footer.footer
+          p
+            | © 2012
+            a href="http://www.startupo.cc"  startupo.cc
+            |  All Rights Reserved.

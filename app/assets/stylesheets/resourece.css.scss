@@ -1,0 +1,38 @@
+.comment-author { display: inline-block; }
+.comment-timestamp { display: inline-block; }
+.resource-header {
+  background: url('/images/darkgrain.png');
+  h1 {
+    font-size: 4em;
+    color: #0069D6;
+    margin-bottom: 15px;
+  }
+  .hero-desc {
+    margin-bottom: 15px;
+  }
+}
+.resource-well {
+  background: url('/images/darkgrain.png');
+  .resource-title{
+    h2 { color: #444; }
+    margin-bottom: 10px;
+  }
+  .resource-footer {
+    font-size: 1.5em;
+  }
+}
+
+.i-want-it {
+  /*height: 20px;*/
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.resource-matchers-count {
+  h1 {
+    display: inline;
+    font-size: 4em;
+  }
+  p { display: inline; }
+}

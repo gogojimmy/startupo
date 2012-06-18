@@ -1,0 +1,6 @@
+section.admin_category.form-inputs
+  = f.input :name, :label => I18n.t('admin_category.attributes.name')
+  = f.input :description, :label => I18n.t('admin_category.attributes.description')
+div.form-actions
+  = f.button :submit, :label => I18n.t('action.save')
+

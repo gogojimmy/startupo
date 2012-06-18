@@ -1,0 +1,23 @@
+section.event.row
+  div.span9
+    - @events.each do |event|
+      div.event.row-fluid
+        div.event-image-thumb.span2
+          = image_tag(event.first_image.url(:medium), :class => 'event-image-thumb')
+        div.span7
+          div.event-date
+            h2= l event.start_time.to_date, :format => '%b %d'
+          div.event-name
+            h2= link_to event.name, admin_event_path(event)
+          div.event-location
+            small 地點: #{event.address}
+          div.event-description
+            = simple_format truncate(event.description, :length => 150)
+        div.event-join.span3
+          = link_to event_join_path(event), :class => 'join-event-btn btn btn-primary btn-large' do
+            i class="icon-large icon-check"
+            |  我要參加
+          h2.event-attendees-count #{event.attendees.count}
+          strong.event-attendees-des 個參加者
+      hr
+    = will_paginate @events

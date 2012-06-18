@@ -1,0 +1,13 @@
+head
+  h1= I18n.t('user.dashboard.manage_my_profile')
+section
+  = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
+    div.form-inputs
+      = f.input :name
+      = f.input :birthday, :label => I18n.t('user.attributes.birthday')
+      = f.input :company, :label => I18n.t('user.attributes.company')
+      = f.input :mobile, :label => I18n.t('user.attributes.mobile')
+      = f.input :title, :label => I18n.t('user.attributes.title')
+      = f.input :address, :label => I18n.t('user.attributes.address')
+    div.form-actions
+      = f.button :submit, :label => I18n.t('action.save'), :class => 'btn btn-primary'

@@ -1,0 +1,41 @@
+head
+  h1 #{@user.name} #{I18n.t('user.my_profile')}
+hr
+section.user.row
+  div.span8
+    table.table.table-striped.table-condensed.table-bordered
+      tr
+        td= I18n.t('user.attributes.name')
+        td.user-name= @user.name
+      tr
+        td= I18n.t('user.attributes.id_no')
+        td.user-id_no= @user.id_no
+      tr
+        td= I18n.t('user.attributes.birthday')
+        td.user-birthday= @user.birthday
+      tr
+        td= I18n.t('user.attributes.company')
+        td.user-company= @user.company
+      tr
+        td= I18n.t('user.attributes.title')
+        td.user-title= @user.title
+      tr
+        td= I18n.t('user.attributes.mobile')
+        td.user-mobile= @user.mobile
+      tr
+        td= I18n.t('user.attributes.address')
+        td.user-mobile= @user.address
+  aside.span4
+    section.actions.well
+      = link_to I18n.t('admin.action.confirm_user'), admin_path(@user), :method => :put, :class => 'btn btn-primary' if @user.confirmed_by.nil?
+    section.board.integrety.well
+      head
+        h1 #{I18n.t('user.my_integrety')} #{@user.integrety}%
+        div.progress.progress-striped.active
+          div.bar style="width: #{@user.integrety}%"
+    section.board.requests.well
+      head
+        h1= I18n.t('user.my_requests')
+    section.board.events.well
+      head
+        h1= I18n.t('user.my_attendings')

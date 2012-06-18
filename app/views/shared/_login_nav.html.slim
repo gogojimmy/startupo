@@ -1,0 +1,12 @@
+ul class="nav pull-right"
+  li= link_to I18n.t('admin.dashboard.panel'), admin_dashboard_path if current_user.is_admin
+  li.dropdown
+    a.dropdown-toggle data-toggle="dropdown" href="#" #{current_user.name}
+    ul.dropdown-menu
+      li
+        a href="/users/#{current_user.id}"
+          i.icon-user
+          | #{I18n.t('user.dashboard.manage_my_profile')}
+  li= link_to destroy_user_session_path, :method => :delete do
+    |  登出
+    i.icon-signout

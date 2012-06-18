@@ -1,0 +1,14 @@
+table.table.table-striped.table-condensed.table-bordered
+  tr
+    th= I18n.t('resource.attributes.state')
+    th= I18n.t('resource.attributes.assign_to')
+    th= I18n.t('resource.attributes.to_public')
+    th= I18n.t('resource.attributes.title')
+    th= I18n.t('resource.attributes.description')
+  - @resources.each do |resource|
+    tr
+      td.resource-state= resource.state
+      td.resource-assignee= resource.assignee.name
+      td.resource-to_public= resource.to_public
+      td.resource-name= link_to resource.title, admin_resource_path(resource)
+      td.resource-description= resource.description

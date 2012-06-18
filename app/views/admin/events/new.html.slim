@@ -1,0 +1,6 @@
+head.event
+  h1= I18n.t('event.new')
+= simple_form_for @event, :url => admin_events_path, :html => { :class => 'form-horizontal' } do |f|
+  = render :partial => 'form', :locals => {:f => f}
+= link_to I18n.t('event.back_to_index'), admin_events_path, :class => 'btn'
+

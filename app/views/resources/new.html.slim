@@ -1,0 +1,5 @@
+head.resource
+  h1= I18n.t('resource.new')
+= simple_form_for @resource, :url => resources_path, :html => { :class => 'form-horizontal' } do |f|
+  = render :partial => 'form', :locals => {:f => f}
+= link_to I18n.t('resource.back_to_index'), resources_path, :class => 'btn'

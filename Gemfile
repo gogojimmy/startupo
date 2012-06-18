@@ -14,6 +14,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass'
   gem 'compass-rails'
+  gem 'bootstrap-sass'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -22,17 +23,21 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'bootstrap-sass'
 gem 'paperclip'
 
 gem 'geocoder'
 gem 'simple_form'
 gem 'slim'
+gem 'haml2slim'
+gem 'devise'
+gem 'will_paginate'
+gem 'geocoder'
 
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'capistrano_colors'
+gem 'rvm-capistrano'
 
 group :development, :test do
   gem 'rspec'
@@ -40,10 +45,13 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "shoulda-matchers"
   gem 'fakeweb'
+  gem 'spork'
   gem 'guard-rspec'
+  gem "guard-spork"
   gem 'simplecov', :require => false
   gem 'awesome_print'
   gem 'capybara'
   gem 'vcr'
   gem 'launchy'
+  gem 'database_cleaner'
 end

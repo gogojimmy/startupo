@@ -1,0 +1,51 @@
+head
+  h1 #{@user.name} #{I18n.t('user.my_profile')}
+hr
+section.user.row
+  div.span8
+    table.table.table-striped.table-condensed.table-bordered
+      tr
+        td= I18n.t('user.attributes.name')
+        td.user-name= @user.name
+      tr
+        td= I18n.t('user.attributes.id_no')
+        td.user-id_no= @user.id_no
+      tr
+        td= I18n.t('user.attributes.birthday')
+        td.user-birthday= @user.birthday
+      tr
+        td= I18n.t('user.attributes.company')
+        td.user-company= @user.company
+      tr
+        td= I18n.t('user.attributes.title')
+        td.user-title= @user.title
+      tr
+        td= I18n.t('user.attributes.mobile')
+        td.user-mobile= @user.mobile
+      tr
+        td= I18n.t('user.attributes.address')
+        td.user-mobile= @user.address
+  aside.span4
+    section.actions.well
+      = link_to I18n.t('action.edit'), edit_user_path(current_user), :class => 'btn btn-primary'
+    section.board.integrety.well
+      head
+        h1 #{I18n.t('user.my_integrety')} #{@user.integrety}%
+        div.progress.progress-striped.active
+          div.bar style="width: #{@user.integrety}%"
+    section.board.requests.well
+      head
+        h1= I18n.t('user.my_requests')
+        div.my_resources
+          table.table.table-striped.table-bordered
+            thead
+              tr
+                td= I18n.t('resource.attributes.title')
+            tbody
+            - @my_resources.each do |resource|
+              tr
+                td= link_to "#{resource.title}", resource_path(resource)
+          = link_to I18n.t('action.show_more'), user_resources_path(current_user)
+    section.board.events.well
+      head
+        h1= I18n.t('user.my_attendings')

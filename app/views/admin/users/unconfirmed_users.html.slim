@@ -1,0 +1,14 @@
+article.row
+  head
+    h1= I18n.t('admin.dashboard.unconfirmed_users')
+  table.table.table-bordered.table-striped.table-condensed
+    thead
+      tr
+        td= I18n.t('admin.column.apply_at')
+        td= I18n.t('user.attributes.name')
+    tbody
+    - @users.each do |user|
+      tr
+        td= user.created_at.to_date
+        td= link_to user.name, admin_user_path(user)
+  = will_paginate

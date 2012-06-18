@@ -1,0 +1,20 @@
+section.row
+  div.sign-in-description.span8
+    div.well
+      h2
+        i class="icon-lock icon-large"
+        |  我們非常重視您的隱私
+      hr
+      p 史塔波是一個分享個人資源的私密聚樂部，每位上網登錄的朋友都是我們極重要的貴賓朋友，為使資源能有效被發揮，請務必使用真實身份註冊。關於您的個人資料，我們也一定會謹慎保密
+  div.signin.span4
+    div.well
+      h2=I18n.t('user.devise.sign_in')
+      hr
+      = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        .inputs
+          = f.input :email, :label => I18n.t('user.attributes.email'), :required => false, :autofocus => true
+          = f.input :password, :label => I18n.t('user.attributes.password'), :required => false
+          = f.input :remember_me, :label => I18n.t('user.devise.remember_me'), :as => :boolean if devise_mapping.rememberable?
+        .actions
+          = f.button :submit, I18n.t('user.devise.sign_in'), :class => 'btn btn-primary btn-large'
+      = render "links"
