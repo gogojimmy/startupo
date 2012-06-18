@@ -39,6 +39,7 @@ Startup::Application.routes.draw do
 
   get '/', :to => "welcomes#index"
   root :to => "welcomes#index"
+  get '/about', :to => "welcomes#about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

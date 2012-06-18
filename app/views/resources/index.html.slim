@@ -1,15 +1,19 @@
-head.resources
-  h1= I18n.t('resource.index')
-hr
 section.resource.row
-  div.span8
-    = link_to I18n.t('action.make_request'), new_resource_path, :class => 'btn btn-large btn-success'
-    table.table.table-striped.table-condensed.table-bordered
-      tr
-        th= I18n.t('resource.attributes.title')
-        th= I18n.t('resource.attributes.description')
-      - @resources.each do |resource|
-        tr
-          td.resource_type-name= link_to resource.title, resource_path(resource)
-          td.resource_type-description= resource.description
+  div.span12
+    div.resource-header.hero-unit
+      h1 史塔波為你媒合您最需要的機會
+      p.hero-desc
+        |史塔波平台上的朋友有兩岸各校EMBA校友們, 兩岸產業界經營者以及高階經理人 您可以在這裡找資金、找商品、找通路、甚至找朋友，只要找到和您理念相同的朋友，夢想就能起飛
+      = link_to '我要尋求媒合機會', new_resource_path, :class => 'btn btn-primary btn-large'
+  - @resources.each do |resource|
+    div.resource.span6
+      div.well.resource-well
+        div.resource-title
+          h2= link_to resource.title, resource_path(resource)
+        div.resource-description
+          div.well
+            = simple_format(resource.description)
+        div.resource-footer
+          i class="icon-user"
+          = " #{resource.matchers.count}"
     =will_paginate

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate
+  before_filter :authenticate if Rails.env.staging?
   protect_from_forgery
 
   def authenticate_admin!
