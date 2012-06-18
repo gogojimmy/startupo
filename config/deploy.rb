@@ -11,7 +11,6 @@ set :application, "startupo"
 set :repository,  "git@github.com:gogojimmy/startupo.git"
 
 set :scm, :git
-set :deploy_via, :remote_cache
 set :scm_verbose, true
 set :use_sudo, false
 
