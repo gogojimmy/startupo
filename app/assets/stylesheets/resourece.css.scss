@@ -1,7 +1,7 @@
 .comment-author { display: inline-block; }
 .comment-timestamp { display: inline-block; }
 .resource-header {
-  background: url('images/darkgrain.png');
+  background: url('/images/darkgrain.png');
   h1 {
     font-size: 4em;
     color: #0069D6;
@@ -12,7 +12,7 @@
   }
 }
 .resource-well {
-  background: url('images/darkgrain.png');
+  background: url('/images/darkgrain.png');
   .resource-title{
     h2 { color: #444; }
     margin-bottom: 10px;
