@@ -79,6 +79,8 @@ zh_tw:
     index: '資源種類列表'
     edit: '修改資源種類'
   resource:
+    comment:
+      create: "%{user} 建立了資源"
     attributes:
       user: '申請人'
       assign_to: '指派處理人'
