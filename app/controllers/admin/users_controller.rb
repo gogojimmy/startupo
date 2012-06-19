@@ -1,8 +1,13 @@
+#encoding: utf-8
 class Admin::UsersController < ApplicationController
   before_filter :authenticate_admin!
 
   def unconfirmed_users
     @users = User.unconfirmed_users.paginate(:page => params[:page])
+  end
+
+  def index
+    @users = User.paginate(:page => params[:page])
   end
 
   def confirm_user
@@ -12,6 +17,17 @@ class Admin::UsersController < ApplicationController
       redirect_to :back
     else
       flash[:error] = I18n.t('admin.message.user_confirm_failed')
+      redirect_to :back
+    end
+  end
+
+  def add_to_admin
+    @user = User.find(params[:id])
+    if @user.update_attributes(:is_admin => true)
+      flash[:notice] = "提昇成功"
+      redirect_to :back
+    else
+      flash[:error] = "提昇失敗"
       redirect_to :back
     end
   end

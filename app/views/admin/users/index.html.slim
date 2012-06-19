@@ -1,16 +1,21 @@
 div.dashboard.row
   aside.span3
     div.well
-      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-unconfirmed_users' }
+      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-users' }
   div.span9
     table.table.table-bordered.table-striped.table-condensed
       thead
         tr
           td= I18n.t('admin.column.apply_at')
           td= I18n.t('user.attributes.name')
+          td 權限
       tbody
       - @users.each do |user|
         tr
           td= user.created_at.to_date
           td= link_to user.name, admin_user_path(user)
+          - if user.is_admin?
+            td 管理員
+          - else
+            td= link_to '提升為管理員', :controller => "admin::users", :action => "add_to_admin", :id => user.id, :method => :put, :class => 'btn btn-primary'
     = will_paginate

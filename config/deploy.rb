@@ -35,6 +35,9 @@ namespace :deploy do
   task :seed do
     run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}"
   end
+  task :reset_db do
+    run "cd #{current_path}; rake db:reset RAILS_ENV=#{rails_env}"
+  end
 end
 
 task :tail_log, :roles => :app do

@@ -1,0 +1,24 @@
+javascript:
+  id = "##{id}"
+coffee:
+  jQuery ->
+    $(id).addClass 'active'
+ul.nav.nav-list
+  li#startupo-unconfirmed_users
+    = link_to admin_unconfirmed_users_path do
+      = t('admin.dashboard.unconfirmed_users')
+      = show_badge(User.unconfirmed_users.count)
+  li#startupo-unapproved_requests
+    = link_to  admin_unapproved_resources_path do
+      = t('admin.dashboard.unapproved_requests')
+      = show_badge(Resource.unapproved.count)
+  li#startupo-my_responsibility
+    = link_to admin_my_responsibility_path do
+      = t('admin.dashboard.my_responsibility')
+      = show_badge(Resource.my_responsibility(current_user).count)
+  li#startupo-events
+    = link_to admin_events_path(:available => true) do
+      = t('admin.dashboard.events')
+      = show_badge(Event.available.count)
+  li#startupo-users
+    = link_to '使用者列表', admin_users_path

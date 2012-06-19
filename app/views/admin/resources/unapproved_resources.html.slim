@@ -1,8 +1,8 @@
-head.resources
-  h1= I18n.t('resource.pending_requests')
-hr
-section.resource.row
-  div.span8
+div.dashboard.row
+  aside.span3
+    div.well
+      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-unapproved_requests' }
+  div.span9
     table.table.table-striped.table-condensed.table-bordered
       tr
         th= I18n.t('resource.attributes.title')
