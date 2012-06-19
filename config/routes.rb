@@ -22,7 +22,7 @@ Startup::Application.routes.draw do
     get '/unapproved_resources' => 'resources#unapproved_resources'
     get '/my_responsibility' => 'resources#my_responsibility'
     put '/confirm_user/:id' => "users#confirm_user"
-    put '/add_to_admin/:id' => "users#add_to_admin"
+    put '/upgrade/:id' => 'users#add_to_admin'
     resources :users
     resources :resources do
       get '/matchers' => 'resources#matchers'

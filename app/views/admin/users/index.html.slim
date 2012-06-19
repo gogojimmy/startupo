@@ -17,5 +17,5 @@ div.dashboard.row
           - if user.is_admin?
             td 管理員
           - else
-            td= link_to '提升為管理員', :controller => "admin::users", :action => "add_to_admin", :id => user.id, :method => :put, :class => 'btn btn-primary'
+            td= link_to '提升為管理員', "upgrade/#{user.id}", :method => :put, :class => 'btn btn-primary'
     = will_paginate
