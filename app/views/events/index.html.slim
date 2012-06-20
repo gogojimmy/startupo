@@ -14,9 +14,12 @@ section.event.row
           div.event-description
             = simple_format truncate(event.description, :length => 150)
         div.event-join.span3
-          = link_to event_join_path(event), :class => 'join-event-btn btn btn-primary btn-large' do
-            i class="icon-large icon-check"
-            |  我要參加
+          - if current_user && event.attendees.include?(current_user)
+            = link_to I18n.t('event.action.joined'), '', :class => 'btn btn-danger btn-large', :disabled => true
+          - else
+            = link_to event_join_path(event), :method => :put, :class => 'join-event-btn btn btn-primary btn-large' do
+              i class="icon-large icon-check"
+              |  我要參加
           h2.event-attendees-count #{event.attendees.count}
           strong.event-attendees-des 個參加者
       hr

@@ -12,9 +12,11 @@ section.event.row
     div.event-images
       - @event.images.each do |image|
         = image_tag(image.image.url(:medium), :class => "image")
+    header.page-header
+      h1 附件
     div.event-files
       - @event.assets.each do |asset|
-        = link_to "#{I18n.t('action.download')} #{asset.attachment_file_name}", asset.file.url
+        = link_to "#{asset.file_file_name}", asset.file.url
   aside.event-aside.span4
     div.event-action
       = show_join_button(@event, current_user)
