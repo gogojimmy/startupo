@@ -22,7 +22,8 @@ section.event.row
       = link_to(image_tag(show_google_map(@event.latitude, @event.longitude), :id => "google-static-map"), link_to_google_map(@event.latitude, @event.longitude), :target => "_blank")
     div.event-files
       - @event.assets.each do |asset|
-        = link_to "#{I18n.t('action.download')} #{asset.attachment_file_name}", asset.file.url
+        | 下載 :
+        = link_to " #{asset.file_file_name}", asset.file.url
   div.span4
     div.attendees.well
       head

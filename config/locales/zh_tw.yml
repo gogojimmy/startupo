@@ -17,6 +17,7 @@ zh_tw:
     update_this_resource: '編輯這個資源'
     make_request: '尋求媒合機會'
     actions: '操作'
+    download: '下載'
   to: '到'
   user:
     attributes:
