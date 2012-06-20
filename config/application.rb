@@ -64,5 +64,13 @@ module Startup
 
     # Slim
     Slim::Engine.set_default_options :pretty => true
+
+    $EMAIL_CONFIG = ActiveSupport::HashWithIndifferentAccess.new YAML.load(File.open("#{Rails.root}/config/email.yml"))[Rails.env]
+
+    config.action_mailer.default_url_options = { :host => $EMAIL_CONFIG[:host] }
+
+    # convert hash's keys from string to symbol, or it would raise error
+    config.action_mailer.smtp_settings = $EMAIL_CONFIG[:smtp].symbolize_keys if !$EMAIL_CONFIG[:smtp].nil?
+
   end
 end

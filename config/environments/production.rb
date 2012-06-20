@@ -65,3 +65,8 @@ Startup::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
+UsersService::Application.config.middleware.use ExceptionNotifier,
+  :email_prefix => "[Startupo Exception Notifier - Production] ",
+  :sender_address => %{"notifier" <admin@startupo.cc>},
+  :exception_recipients => %w{jimmy@gogojimmy.net}

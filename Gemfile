@@ -32,6 +32,7 @@ gem 'haml2slim'
 gem 'devise'
 gem 'will_paginate'
 gem 'geocoder'
+gem 'exception_notification'
 
 # Deploy with Capistrano
 gem 'capistrano'
