@@ -8,7 +8,7 @@ section.event.row
           div.event-date
             h2= l event.start_time.to_date, :format => '%b %d'
           div.event-name
-            h2= link_to event.name, admin_event_path(event)
+            h2= link_to event.name, event_path(event)
           div.event-location
             small 地點: #{event.address}
           div.event-description
