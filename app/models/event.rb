@@ -18,6 +18,7 @@ class Event < ActiveRecord::Base
   end
 
   def first_image
+    return false if self.images.count == 0
     self.images.first.image
   end
 end

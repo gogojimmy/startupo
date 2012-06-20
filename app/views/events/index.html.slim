@@ -3,7 +3,7 @@ section.event.row
     - @events.each do |event|
       div.event.row-fluid
         div.event-image-thumb.span2
-          = image_tag(event.first_image.url(:medium), :class => 'event-image-thumb')
+          = image_tag(event.first_image.url(:medium), :class => 'event-image-thumb') if event.first_image
         div.span7
           div.event-date
             h2= l event.start_time.to_date, :format => '%b %d'
