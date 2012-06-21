@@ -26,5 +26,5 @@ section.event.row
         br
         = link_to(image_tag(show_google_map(@event.latitude, @event.longitude), :id => "google-static-map"), link_to_google_map(@event.latitude, @event.longitude), :target => "_blank")
 section.event.actions
-  - if current_user.is_admin?
+  - if current_user && current_user.is_admin?
     = link_to I18n.t('event.update_this_event'), edit_admin_event_path(@event), :class => 'btn btn-primary'
