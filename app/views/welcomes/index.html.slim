@@ -1,19 +1,16 @@
-div.welcome.row
-  header.span8
-    div.hero-unit
-      h1.startupo-highlight Startup All!
-      h3.startupo-des Startup all your mind or startup all your ideas.
-      hr
-      p 史塔波，就是 Startup all 的意思。
-      p 史塔波是讓您夢想啟動的平台， 把我們的資源和夢想放上來，讓朋友們一起啟動夢想的資源。
-  section.upcoming-event.span4
-    div.well.well-color
-      head
-        h2 史塔波的推薦活動
-      hr
-        -@upcoming_events.each do |event|
-          div.welcome-events
-            div.span1.welcome-event-date
-              = l event.start_time, :format => '%B %C'
-            div.span2.welcome-event-name
-              = link_to event.name, event_path(event)
+section.welcome-page
+  div#main-info
+    div.container
+      div.row
+        div.span8
+          div.bigImage
+            = image_tag('/images/promo.jpg')
+            div.description
+              p 史塔波是讓您夢想啟動的平台， 把我們的資源和夢想放上來，讓朋友們一起啟動夢想的資源。
+        div.span4
+          h2 最新的媒合活動
+          - @upcoming_events.each do |event|
+            = link_to event_path(event), :class => 'upcoming-event' do
+              div.preview
+                h3= event.name
+                p= event.description[0..35] + "..."

@@ -18,3 +18,4 @@
 //= require bootstrap-carousel
 //= require bootstrap-tooltip
 //= require bootstrap-popover
+//= require bootstrap-modal
