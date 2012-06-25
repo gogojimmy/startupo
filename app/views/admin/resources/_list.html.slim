@@ -8,7 +8,10 @@ table.table.table-striped.table-condensed.table-bordered
   - @resources.each do |resource|
     tr
       td.resource-state= resource.state
-      td.resource-assignee= resource.assignee.name
+      - if resource.assignee
+        td.resource-assignee= resource.assignee.name
+      - else
+        td 未指定處理人員
       td.resource-to_public= resource.to_public
       td.resource-name= link_to resource.title, admin_resource_path(resource)
       td.resource-description= resource.description
