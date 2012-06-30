@@ -8,6 +8,10 @@ class ResourcesController < ApplicationController
     else
       @resources = Resource.public_resources.paginate(:page => params[:page])
     end
+
+    if params[:type]
+      @resources.by_type(params[:type])
+    end
   end
 
   def new

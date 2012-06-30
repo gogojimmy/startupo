@@ -39,7 +39,7 @@ Startup::Application.routes.draw do
   end
 
   get '/', :to => "welcomes#index"
-  root :to => "welcomes#index"
+  root :to => "resources#index"
   get '/about', :to => "welcomes#about"
 
   # The priority is based upon order of creation:

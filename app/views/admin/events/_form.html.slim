@@ -14,10 +14,14 @@ section.event.form-inputs
       = p.input :image, :label => I18n.t('image.attributes.image'), :as => :file
     - else
       = image_tag(p.object.image.url(:thumb))
+      '
+      = p.check_box :_destroy, :label => '刪除'
   = f.simple_fields_for :assets do |z|
     - if z.object.new_record?
       = z.input :file, :label => I18n.t('asset.attributes.file'), :as => :file
     - else
-      = z.check_box :_delete
+      = z.object.file_file_name
+      '
+      = z.check_box :_destroy, :label => '刪除'
 div.form-actions
   = f.submit I18n.t('action.save'), :class => 'btn btn-primary'
