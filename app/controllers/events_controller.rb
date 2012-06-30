@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, :only => [:join]
 
   def index
-    @events = Event.available.paginate(:page => params[:page])
+    @events = Event.available.opened.paginate(:page => params[:page])
   end
 
   def show

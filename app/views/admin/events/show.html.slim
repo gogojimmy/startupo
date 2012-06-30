@@ -25,11 +25,10 @@ section.event.row
         | 下載 :
         = link_to " #{asset.file_file_name}", asset.file.url
   div.span4
+    = link_to I18n.t('event.update_this_event'), edit_admin_event_path(@event), :class => 'btn btn-primary'
     div.attendees.well
       head
         h1 #{I18n.t('event.attributes.attendees')} #{show_badge(@event.attendees.count)}
       div.attendees
         - @event.attendees[0..10].each do |attendee|
           = link_to attendee.name, user_path(attendee)
-section.event.actions
-  = link_to I18n.t('event.update_this_event'), edit_admin_event_path(@event), :class => 'btn btn-primary'

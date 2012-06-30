@@ -25,7 +25,7 @@ section.event.row
             = link_to event_join_path(event), :method => :put, :class => 'join-event-btn btn btn-primary btn-large' do
               i class="icon-large icon-check"
               |  我要參加
-          h2.event-attendees-count #{event.attendees.count}
-          strong.event-attendees-des 個參加者
+          /h2.event-attendees-count #{event.attendees.count}
+          /strong.event-attendees-des 個參加者
       hr
     = will_paginate @events

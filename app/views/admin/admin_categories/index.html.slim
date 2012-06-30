@@ -1,8 +1,9 @@
-head.admin_categories
-  h1= I18n.t('admin_category.index')
-hr
-section.admin_categories.row
-  div.span8
+div.dashboard.row
+  aside.span3
+    div.well
+      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'admin-categories' }
+  div.span9
+    = link_to "新增欄位", new_admin_admin_category_path, :class => 'btn btn-primary'
     table.table.table-striped.table-condensed.table-bordered
       tr
         th= I18n.t('admin_category.attributes.name')

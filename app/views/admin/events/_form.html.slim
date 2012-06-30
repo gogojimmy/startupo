@@ -9,6 +9,7 @@ section.event.form-inputs
   = f.input :end_time, :label => I18n.t('event.attributes.end_time')
   = f.input :address, :label => I18n.t('event.attributes.address'), :input_html => {:class => 'span8'}
   = f.input :price, :label => '費用', :input_html => {:class => 'span8'}
+  = f.input :is_open, :label => '是否發佈到前台'
   = f.simple_fields_for :images do |p|
     - if p.object.new_record?
       = p.input :image, :label => I18n.t('image.attributes.image'), :as => :file

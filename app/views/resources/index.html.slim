@@ -16,15 +16,27 @@ section.resource.row
       li id="strategy"= link_to '策略聯盟', resources_path(:type => 'strategy')
       li id="contacts"= link_to '人脈資源', resources_path(:type => 'contacts')
       li id="activity"= link_to '活動配合', resources_path(:type => 'activity')
-  - @resources.each do |resource|
-    div.resource.span6
-      div.well.resource-well
-        div.resource-title
-          h2= link_to resource.title, resource_path(resource)
-        div.resource-description
-          div.well
-            = simple_format(resource.description)
-        /div.resource-footer
-          /i class="icon-user"
-          /= " #{resource.matchers.count}"
+  - @resources.each_slice(2) do |a, b|
+    div.resources.row
+      div.resource.span6
+        div.well.resource-well
+          div.resource-title
+            h2= link_to a.title, resource_path(a)
+          div.resource-description
+            div.well
+              = simple_format(a.description)
+          /div.resource-footer
+            /i class="icon-user"
+            /= " #{resource.matchers.count}"
+      - if b
+        div.resource.span6
+          div.well.resource-well
+            div.resource-title
+              h2= link_to b.title, resource_path(b)
+            div.resource-description
+              div.well
+                = simple_format(b.description)
+            /div.resource-footer
+              /i class="icon-user"
+              /= " #{resource.matchers.count}"
     =will_paginate

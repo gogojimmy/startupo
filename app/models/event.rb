@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
   after_validation :geocode
 
   scope :available, where(["start_time > ?", Time.now])
+  scope :opened, where(:is_open => true)
 
   def join(user)
     JoinEventAttendeeShip.create!(:user_id => user.id, :event_id => self.id)
