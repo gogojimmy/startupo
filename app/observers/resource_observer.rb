@@ -3,6 +3,6 @@ class ResourceObserver < ActiveRecord::Observer
 
   def after_create(resource)
     resource.comments.create(:user => resource.user,
-                             :content => I18n.t('resource.comment.create'), :user => resource.user.name)
+                             :content => I18n.t('resource.comment.create', :user => resource.user.name))
   end
 end
