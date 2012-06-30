@@ -45,6 +45,28 @@ class Resource < ActiveRecord::Base
     end
   end
 
+  def self.by_type(type)
+    case type
+    when "fund"
+      type = "資金"
+    when "team"
+      type = "團隊"
+    when "suplier"
+      type = "供應商"
+    when "tech"
+      type = "製造技術"
+    when "access"
+      type = "相關通路"
+    when "strategy"
+      type = "策略聯盟"
+    when "contacts"
+      type = "人脈資源"
+    when "activity"
+      type = "活動配合"
+    end
+    Resource.joins(:resource_types).where(:resource_types => {:name => type})
+  end
+
   def self.by_category(category)
     Resource.joins(:admin_categories).where(:admin_categories => {:name => category})
   end

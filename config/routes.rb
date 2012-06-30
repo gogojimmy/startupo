@@ -1,4 +1,5 @@
 Startup::Application.routes.draw do
+  root :to => "resources#index"
   devise_for :users, :skip => [:sessions]
   as :user do
     get 'signin' => 'devise/sessions#new', :as => :new_user_session
@@ -39,7 +40,6 @@ Startup::Application.routes.draw do
   end
 
   get '/', :to => "welcomes#index"
-  root :to => "resources#index"
   get '/about', :to => "welcomes#about"
 
   # The priority is based upon order of creation:
