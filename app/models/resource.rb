@@ -51,7 +51,7 @@ class Resource < ActiveRecord::Base
       type = "資金"
     when "team"
       type = "團隊"
-    when "suplier"
+    when "supplier"
       type = "供應商"
     when "tech"
       type = "製造技術"

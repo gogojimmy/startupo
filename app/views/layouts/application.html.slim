@@ -48,9 +48,11 @@ html lang="ZH"
               li
                 a href="/events" #{I18n.t('events')}
           - if current_user
-            = render :partial => 'shared/login_nav'
+            div.hidden-phone
+              = render :partial => 'shared/login_nav'
           - else
-            = render :partial => 'shared/not_login_nav'
+            div.hidden-phone
+              = render :partial => 'shared/not_login_nav'
     section.container
       - flash.each do |name, msg|
         div{class="alert alert-#{name == :notice ? "success" : "error"}"}

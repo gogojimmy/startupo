@@ -1,12 +1,12 @@
-head.resource
-  h1= @resource.title
 section.resource.row
   div.resource-row.span8
+    head.resource
+      h1= @resource.title
     div.well.resource-well
       h2= @resource.description
   aside.funcion.span4
     = show_want_button(@resource, current_user)
   div.resource-matchers-count.span4
-    h1
-      = @resource.matchers.count
-    p 個人對這個資源有興趣
+    /h1
+      /= @resource.matchers.count
+    /p 個人對這個資源有興趣
