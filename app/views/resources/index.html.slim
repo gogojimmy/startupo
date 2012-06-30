@@ -1,21 +1,47 @@
-section.resource.row
-  div.span12
-    div.resource-header.hero-unit.hidden-phone
-      h1 史塔波為你媒合您最需要的機會
-      p.hero-desc
-        |史塔波平台上的朋友有兩岸各校EMBA校友們, 兩岸產業界經營者以及高階經理人 您可以在這裡找資金、找商品、找通路、甚至找朋友，只要找到和您理念相同的朋友，夢想就能起飛
-      = link_to '我要尋求媒合機會', new_resource_path, :class => 'btn btn-primary btn-large'
-  div.resource.filter.span12
-    ul class="nav nav-pills" id="resource-tabs"
-      li id="all"= link_to '所有資源', resources_path
-      li id="fund"= link_to '資金', resources_path(:type => 'fund')
-      li id="team"= link_to '團隊', resources_path(:type => 'team')
-      li id="supplier"= link_to '供應商', resources_path(:type => 'supplier')
-      li id="tech"= link_to '製造技術', resources_path(:type => 'tech')
-      li id="access"= link_to '相關通路', resources_path(:type => 'access')
-      li id="strategy"= link_to '策略聯盟', resources_path(:type => 'strategy')
-      li id="contacts"= link_to '人脈資源', resources_path(:type => 'contacts')
-      li id="activity"= link_to '活動配合', resources_path(:type => 'activity')
+section.resource
+  div.row
+    div.span12
+      div.resource-header.hero-unit.hidden-phone
+        h1 史塔波為你媒合您最需要的機會
+        p.hero-desc
+          |史塔波平台上的朋友有兩岸各校EMBA校友們, 兩岸產業界經營者以及高階經理人 您可以在這裡找資金、找商品、找通路、甚至找朋友，只要找到和您理念相同的朋友，夢想就能起飛
+        = link_to '我要尋求媒合機會', new_resource_path, :class => 'btn btn-primary btn-large'
+  div.services-list.row
+    div.span12
+      header.page-header
+        h1 服務項目
+  div.services.span12
+    div.row
+      div.busuness-match.span3
+        div.service-icon
+          i.icon-group
+        h3 商機媒合
+      div.market-valuation.span3
+        div.service-icon
+          i.icon-money
+        h3 市值評估
+      div.resources-integrate.span3
+        div.service-icon
+          i.icon-sitemap
+        h3 資源整合
+      div.resource-seek.span3
+        div.service-icon
+          i.icon-search
+        h3 協尋資源
+  div.row
+    hr.span12
+    div.resource.filter.span12
+      ul class="nav nav-pills" id="resource-tabs"
+        li id="all"= link_to '所有資源', resources_path
+        li id="fund"= link_to '資金', resources_path(:type => 'fund')
+        li id="team"= link_to '團隊', resources_path(:type => 'team')
+        li id="supplier"= link_to '供應商', resources_path(:type => 'supplier')
+        li id="tech"= link_to '製造技術', resources_path(:type => 'tech')
+        li id="access"= link_to '相關通路', resources_path(:type => 'access')
+        li id="strategy"= link_to '策略聯盟', resources_path(:type => 'strategy')
+        li id="contacts"= link_to '人脈資源', resources_path(:type => 'contacts')
+        li id="activity"= link_to '活動配合', resources_path(:type => 'activity')
+  div.row
   - @resources.each_slice(2) do |a, b|
     div.resources.row
       div.resource.span6

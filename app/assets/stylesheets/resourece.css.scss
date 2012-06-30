@@ -37,3 +37,16 @@
   }
   p { display: inline; }
 }
+
+.services {
+  text-align: center;
+  .service-icon {
+    font-size: 3em;
+    color: #0069D6;
+    margin-bottom: 15px;
+    padding: 0 20px 0 0;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+}
