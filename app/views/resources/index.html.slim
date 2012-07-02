@@ -10,24 +10,28 @@ section.resource
     div.span12
       header.page-header
         h1 服務項目
+  /javascript:
+    /$(document).ready(function(){
+      /$('.service').popover('toggle');
+    /});
   div.row
     div.services.span12
       div.row
         div.busuness-match.span3
           div.service-icon
-            i.icon-group
+            i.icon-group.service data-content="您有特殊商機需要找到買家, 史塔波平台將協助您找到買家, 安排見面會議, 不介入談判內容"
           h3 商機媒合
         div.market-valuation.span3
           div.service-icon
-            i.icon-money
+            i.icon-money.service data-content="史塔波平台提供最適合您產業的專業鑑價顧問, 不論您的公司在台灣或是大陸"
           h3 市值評估
         div.resources-integrate.span3
           div.service-icon
-            i.icon-sitemap
+            i.icon-sitemap.service data-content="每個人身邊的資源有限, 透過史塔波開放的網路平台, 為您找尋資源無國界, 有效協助平台上的每一個會員"
           h3 資源整合
         div.resource-seek.span3
           div.service-icon
-            i.icon-search
+            i.icon-search.service-left data-content="史塔波平台協助以下資源 ( 團隊(人才) / 供應商/ 特殊人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金 )"
           h3 協尋資源
   div.row
     hr.span12

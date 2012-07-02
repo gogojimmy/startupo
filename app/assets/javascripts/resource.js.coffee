@@ -35,3 +35,5 @@ jQuery ->
     else
       $('#all').addClass "active"
   $('#resource-tabs a:first').tab 'show'
+  $(".service").popover(trigger: 'hover')
+  $(".service-left").popover(trigger: 'hover', placement: 'left')
