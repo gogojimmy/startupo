@@ -9,5 +9,6 @@ section
       = f.input :mobile, :label => I18n.t('user.attributes.mobile')
       = f.input :title, :label => I18n.t('user.attributes.title')
       = f.input :address, :label => I18n.t('user.attributes.address')
+      = f.input :industry, :label => t('user.attributes.industry'), :collection => User::INDUSTRY.invert, :include_empty => false
     div.form-actions
       = f.button :submit, :label => I18n.t('action.save'), :class => 'btn btn-primary'

@@ -1,6 +1,8 @@
 doctype html
 html lang="ZH"
   head
+    - if user_signed_in? && @title
+      title = "#{I18n.t('brand')} #{I18n.t('brand_description')} | #{@title}"
     -if user_signed_in?
       title= "#{I18n.t('brand')} #{I18n.t('brand_description')}"
     -elsif @title
@@ -33,7 +35,7 @@ html lang="ZH"
       |
       | </script>
   body
-    nav.navbar.navbar-fixed
+    nav.navbar.navbar-fixed#main-nav
       div.navbar-inner
         div.container
           a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"

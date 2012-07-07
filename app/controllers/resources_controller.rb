@@ -51,6 +51,7 @@ class ResourcesController < ApplicationController
 
   def show
     @resource = Resource.find(params[:id])
+    @title = @resource.title
   end
 
   def i_want_it

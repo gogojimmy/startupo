@@ -37,6 +37,7 @@ Startup::Application.routes.draw do
     resources :events do
       get '/attendees' => 'event#attendees'
     end
+    resources :posts
   end
 
   get '/', :to => "welcomes#index"

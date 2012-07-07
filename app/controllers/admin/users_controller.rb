@@ -1,5 +1,6 @@
 #encoding: utf-8
 class Admin::UsersController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_admin!
 
   def unconfirmed_users
@@ -7,7 +8,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(:page => params[:page])
+    @users = User.scoped
+    if params[:type]
+      @users = @users.by_industry(params[:type])
+    end
+    @users = @users.paginate(:page => params[:page])
   end
 
   def confirm_user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630134248) do
+ActiveRecord::Schema.define(:version => 20120707064951) do
 
   create_table "admin_categories", :force => true do |t|
     t.string   "name"
@@ -40,8 +40,10 @@ ActiveRecord::Schema.define(:version => 20120630134248) do
     t.text     "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "post_id"
   end
 
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
   add_index "comments", ["resource_id"], :name => "index_comments_on_resource_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
@@ -90,6 +92,13 @@ ActiveRecord::Schema.define(:version => 20120630134248) do
 
   add_index "join_event_attendee_ships", ["event_id"], :name => "index_join_event_attendee_ships_on_event_id"
   add_index "join_event_attendee_ships", ["user_id"], :name => "index_join_event_attendee_ships_on_user_id"
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "resource_admin_category_ships", :force => true do |t|
     t.integer  "resource_id"
@@ -177,9 +186,12 @@ ActiveRecord::Schema.define(:version => 20120630134248) do
     t.datetime "updated_at",                                :null => false
     t.string   "address"
     t.integer  "confirmed_by"
+    t.string   "industy"
+    t.string   "industry"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["industry"], :name => "index_users_on_industry"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

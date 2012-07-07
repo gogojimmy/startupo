@@ -11,6 +11,9 @@ section.user.row
         td= I18n.t('user.attributes.id_no')
         td.user-id_no= @user.id_no
       tr
+        td= I18n.t('user.attributes.email')
+        td.user-email= @user.email
+      tr
         td= I18n.t('user.attributes.birthday')
         td.user-birthday= @user.birthday
       tr
@@ -24,7 +27,10 @@ section.user.row
         td.user-mobile= @user.mobile
       tr
         td= I18n.t('user.attributes.address')
-        td.user-mobile= @user.address
+        td.user-address= @user.address
+      tr
+        td= I18n.t('user.attributes.industry')
+        td.user-industry= User::INDUSTRY[@user.industry]
   aside.span4
     section.actions.well
       = link_to I18n.t('action.edit'), edit_user_path(current_user), :class => 'btn btn-primary'

@@ -33,6 +33,7 @@ zh_tw:
       confirm_new_password: '新密碼確認'
       mobile: '手機'
       address: '地址'
+      industry: '產業別'
     dashboard:
       manage_my_profile: '管理我的資料'
     my_profile: '的個人資料'
