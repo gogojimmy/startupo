@@ -1,4 +1,6 @@
 Startup::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   root :to => "resources#index"
   devise_for :users, :skip => [:sessions]
   as :user do
@@ -40,8 +42,7 @@ Startup::Application.routes.draw do
     resources :posts
   end
 
-  get '/', :to => "welcomes#index"
-  get '/about', :to => "welcomes#about"
+  get '/about', :to => "welcome#about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

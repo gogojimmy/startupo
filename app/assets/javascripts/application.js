@@ -20,3 +20,4 @@
 //= require bootstrap-popover
 //= require bootstrap-modal
 //= require bootstrap-tab
+//= require ckeditor/init

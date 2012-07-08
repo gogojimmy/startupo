@@ -53,6 +53,9 @@ GEM
     childprocess (0.3.1)
       ffi (~> 1.0.6)
     chunky_png (1.2.5)
+    ckeditor (3.7.1)
+      mime-types
+      orm_adapter
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -195,6 +198,8 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
     simplecov-html (0.5.3)
+    sitemap_generator (3.1.1)
+      builder
     slim (1.2.0)
       temple (~> 0.4.0)
       tilt (~> 1.3.3)
@@ -230,6 +235,7 @@ DEPENDENCIES
   capistrano-ext
   capistrano_colors
   capybara
+  ckeditor (= 3.7.1)
   coffee-rails (~> 3.2.1)
   compass
   compass-rails
@@ -254,6 +260,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   simplecov
+  sitemap_generator
   slim
   spork
   uglifier (>= 1.0.3)
