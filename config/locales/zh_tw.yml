@@ -6,6 +6,9 @@ zh_tw:
   events: '活動'
   available_events: '可參加的活動'
   s: '的'
+  contacting: '聯絡中'
+  deny: '拒絕'
+  matched: '就確定是你了'
   action:
     edit: '修改'
     save: '儲存'

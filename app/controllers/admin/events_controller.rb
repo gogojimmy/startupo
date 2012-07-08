@@ -3,10 +3,10 @@ class Admin::EventsController < ApplicationController
 
   def new
     @event = Event.new
-    2.times do
-      @event.assets.build
-      @event.images.build
-    end
+    #2.times do
+      #@event.assets.build
+      #@event.images.build
+    #end
   end
 
   def create

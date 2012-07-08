@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
                "high-tech" => "高科技產業", "green" => "綠色產業",
                "helth" => "健康產業"}
 
+  validates_inclusion_of :industry, :in => INDUSTRY.keys
+
   def integrety
     has_value = 0.0
     attributes = [:name, :address, :birthday, :company, :title, :mobile,

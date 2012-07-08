@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::ResourcesController < ApplicationController
   before_filter :authenticate_admin!
 
@@ -62,6 +63,8 @@ class Admin::ResourcesController < ApplicationController
   def match
     @resource = Resource.find(params[:resource_id])
     if @resource.update_match_status(params[:matcher], params[:status])
+      @resource.comments.create(:user => current_user,
+                                :content => "#{current_user.name} 將 #{User.find(params[:matcher]).name} 的處理狀態改為 #{t params[:status]}")
       flash[:notice] = I18n.t('action.update_successful')
     end
     redirect_to admin_resource_matchers_path(@resource)
