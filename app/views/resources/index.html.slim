@@ -55,7 +55,7 @@ section.resource
             h2= link_to a.title, resource_path(a)
           div.resource-description
             div.well
-              = simple_format(a.description)
+              = simple_format(a.description[0..70] + "...")
           /div.resource-footer
             /i class="icon-user"
             /= " #{resource.matchers.count}"
@@ -66,7 +66,7 @@ section.resource
               h2= link_to b.title, resource_path(b)
             div.resource-description
               div.well
-                = simple_format(b.description)
+                = simple_format(b.description[0..70] + "...")
             /div.resource-footer
               /i class="icon-user"
               /= " #{resource.matchers.count}"
