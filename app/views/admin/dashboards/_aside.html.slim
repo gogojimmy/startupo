@@ -4,6 +4,10 @@ coffee:
   jQuery ->
     $(id).addClass 'active'
 ul.nav.nav-list
+  li#startupo-resources
+    = link_to admin_resources_path do
+      = t('admin.dashboard.resources')
+      = show_badge(Resource.count)
   li#startupo-unconfirmed_users
     = link_to admin_unconfirmed_users_path do
       = t('admin.dashboard.unconfirmed_users')

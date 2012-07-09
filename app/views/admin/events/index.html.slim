@@ -1,8 +1,8 @@
 div.dashboard.row
-  aside.span3
+  aside.span2
     div.well
       = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-events' }
-  div.span9
+  div.span10
     = link_to I18n.t('event.add_event'), new_admin_event_path, :class => 'btn btn-large btn-success'
     hr
     - @events.each do |event|

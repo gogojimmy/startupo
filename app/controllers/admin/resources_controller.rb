@@ -1,5 +1,6 @@
 #encoding: utf-8
 class Admin::ResourcesController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_admin!
 
   def index

@@ -1,9 +1,9 @@
 div.dashboard.row
-  aside.span3
+  aside.span2
     div.well
       = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-users' }
-  div.span9
-    div.resource.filter.span12
+  div.span10
+    div.resource.filter
       ul class="nav nav-pills" id="resource-tabs"
         li id="all"= link_to "所有", admin_users_path
         li id="culture"= link_to '文創產業', admin_users_path(:type => 'culture')

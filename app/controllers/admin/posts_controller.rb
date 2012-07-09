@@ -15,7 +15,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def update
@@ -23,18 +23,18 @@ class Admin::PostsController < ApplicationController
 
     if @post.update_attributes(params[:post])
       flash[:notice] = "文章更新成功"
-      redirect_to post_path(@post)
+      redirect_to admin_post_path(@post)
     else
       render :edit
     end
   end
 
   def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.build(params[:post])
 
     if @post.save
       flash[:notice] = "文章新增成功"
-      redirect_to posts_path
+      redirect_to admin_posts_path
     else
       render :new
     end
