@@ -46,7 +46,12 @@ Startup::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( admin/admin.js compass/ie.css compass/screen.css compass/print.css )
+  config.assets.precompile += %w( admin/admin.js
+                                  font-awesome/css/*
+                                  compass/ie.css
+                                  compass/screen.css
+                                  compass/print.css
+                                  ckeditor/* )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

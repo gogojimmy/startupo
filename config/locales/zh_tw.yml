@@ -55,7 +55,7 @@ zh_tw:
     email: 'Email'
     send_me_reset_password_instructions: '寄送重設密碼信給我'
     devise:
-      sign_up: '加入史塔波'
+      sign_up: '註冊史塔波帳號'
       sign_in: '登入'
       sign_out: '登出'
       remember_me: '記住我'
