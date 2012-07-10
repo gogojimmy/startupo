@@ -1,6 +1,7 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 require 'capistrano_colors'
+require "delayed/recipes"
 #$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
 
@@ -15,6 +16,7 @@ set :use_sudo, false
 
 set :stages, %(staging production)
 set :default_stage, "staging"
+set :rails_env, "production" #added for delayed job
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -56,6 +58,38 @@ task :tail_log, :roles => :app do
   run "tail -f #{shared_path}/log/#{rails_env}.log"
 end
 
+namespace :mysql do
+  task :sync do ; end
+
+  task :backup, :roles => :db, :only => { :primary => true } do
+    run "mkdir -p #{shared_path}/backup"
+    filename = "#{shared_path}/backup/#{application}.sql"
+    text = capture "cat #{deploy_to}/current/config/database.yml"
+    yaml = YAML::load(text)
+
+    on_rollback { run "rm #{filename}" }
+    run "mysqldump -u #{yaml[rails_env]['username']} -p #{yaml[rails_env]['database']} > #{filename}" do |ch, stream, out|
+      ch.send_data "#{yaml[rails_env]['password']}\n" if out =~ /^Enter password:/
+    end
+  end
+
+  task :import do
+    config = YAML.load_file("config/database.yml")["development"]
+    username, password, database = config.values_at *%w( username password database )
+
+    remote_file = "#{shared_path}/backup/#{application}.sql"
+    local_filename = "mysql_backup/#{application}.sql"
+
+    run_locally "mkdir -p mysql_backup"
+    get "#{remote_file}", local_filename
+
+    mysql_cmd = "mysql -u#{username}"
+    mysql_cmd += " -p#{password}" if password
+    `#{mysql_cmd} -e "drop database #{database}; create database #{database}"`
+    `#{mysql_cmd} #{database} < #{local_filename}`
+  end
+end
+
 before "deploy:assets:precompile", "deploy:custom_setup"
 before 'deploy:setup', 'rvm:install_rvm'
 
@@ -63,3 +97,7 @@ after "deploy", "deploy:cleanup"
 
 after "deploy:migrations", "deploy:cleanup"
 after "deploy:migrations", "deploy:generate_yard"
+after "mysql:sync", "mysql:backup", "mysql:import"
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
