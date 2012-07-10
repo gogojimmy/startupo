@@ -57,6 +57,7 @@ class ResourcesController < ApplicationController
   def i_want_it
     @resource = Resource.find(params[:resource_id])
     @resource.i_want_it(current_user)
+    @resource.delay.send_interest_mail(current_user)
     flash[:notice] = I18n.t('resource.message.add_to_wants')
     redirect_to @resource
   end

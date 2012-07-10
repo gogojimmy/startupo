@@ -102,6 +102,10 @@ class Resource < ActiveRecord::Base
     end
   end
 
+  def send_interest_mail(user)
+    ResourceMailer.somebody_interest_it(user, self).deliver
+  end
+
   protected
 
   def have_or_find_resources
