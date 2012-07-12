@@ -35,10 +35,6 @@ class Admin::EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    2.times do
-      @event.assets.build
-      @event.images.build
-    end
   end
 
   def update

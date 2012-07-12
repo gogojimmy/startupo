@@ -12,18 +12,18 @@ section.event.row
       tr
         td= I18n.t('event.attributes.duration')
         td.event_description= "#{I18n.l(@event.start_time)} #{I18n.t('to')} #{I18n.l(@event.end_time)}"
-    div.event-images
-      - @event.images.each do |image|
-        = image_tag(image.image.url(:medium), :class => "image")
+    /div.event-images
+      /- @event.images.each do |image|
+        /= image_tag(image.image.url(:medium), :class => "image")
     div.map
       h2= I18n.t('event.attributes.address')
       = @event.address
       br
       = link_to(image_tag(show_google_map(@event.latitude, @event.longitude), :id => "google-static-map"), link_to_google_map(@event.latitude, @event.longitude), :target => "_blank")
-    div.event-files
-      - @event.assets.each do |asset|
-        | 下載 :
-        = link_to " #{asset.file_file_name}", asset.file.url
+    /div.event-files
+      /- @event.assets.each do |asset|
+        /| 下載 :
+        /= link_to " #{asset.file_file_name}", asset.file.url
   div.span4
     = link_to I18n.t('event.update_this_event'), edit_admin_event_path(@event), :class => 'btn btn-primary'
     div.attendees.well
