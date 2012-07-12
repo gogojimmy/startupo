@@ -6,7 +6,7 @@ html lang="ZH"
     -if user_signed_in?
       title= "#{I18n.t('brand')} #{I18n.t('brand_description')}"
     -elsif @title
-      title= "#{I18n.t('brand')} | #{I18n.t(@title)}"
+      title= "#{I18n.t('brand')} | #{@title}"
     -else
       title= "#{I18n.t('brand')}"
     link href="/assets/compass/screen.css" media="screen, projection" rel="stylesheet" type="text/css"
