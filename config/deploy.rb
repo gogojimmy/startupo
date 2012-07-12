@@ -39,19 +39,24 @@ namespace :deploy do
   task :reset_db do
     run "cd #{current_path}; rake db:reset RAILS_ENV=#{rails_env}"
   end
-  #namespace :assets do
-    #task :precompile, :roles => :web, :except => { :no_release => true } do
-      #from = source.next_revision(current_revision)
-      #if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
-        #run_locally "bundle exec rake assets:precompile"
-        #find_servers_for_task(current_task).each do |server|
-          #run_locally "rsync -vr --exclude='.DS_Store' public/assets #{user}@#{server.host}:#{shared_path}/"
-        #end
-      #else
-        #logger.info "Skipping asset pre-compilation because there were no asset changes"
-      #end
-    #end
-  #end
+
+  task :copy_old_sitemap do
+    run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
+  end
+
+  namespace :assets do
+    task :precompile, :roles => :web, :except => { :no_release => true } do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run_locally "bundle exec rake assets:precompile"
+        find_servers_for_task(current_task).each do |server|
+          run_locally "rsync -vr --exclude='.DS_Store' public/assets #{user}@#{server.host}:#{shared_path}/"
+        end
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+  end
 end
 
 task :tail_log, :roles => :app do
@@ -90,14 +95,18 @@ namespace :mysql do
   end
 end
 
+task :refresh_sitemaps do
+  run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+end
+
 before "deploy:assets:precompile", "deploy:custom_setup"
 before 'deploy:setup', 'rvm:install_rvm'
-
 after "deploy", "deploy:cleanup"
-
 after "deploy:migrations", "deploy:cleanup"
 after "deploy:migrations", "deploy:generate_yard"
 after "mysql:sync", "mysql:backup", "mysql:import"
 after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
+after "deploy:update_code", "deploy:copy_old_sitemap"
+after "deploy", "refresh_sitemaps"
