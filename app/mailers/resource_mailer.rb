@@ -5,11 +5,7 @@ class ResourceMailer < ActionMailer::Base
   def somebody_interest_it(user, resource)
     @resource = resource
     @user = user
-    if @resource.assignee
-      @mail_to = resource.assignee
-    else
-      @mail_to = "kate@startupo.cc"
-    end
-    mail(:to => 'jimmy@gogojimmy.net', :subject => "有人對 #{resource.title} 表示有興趣")
+    @mail_to = resource.assignee.email || 'kate@startupo.cc'
+    mail(:to => @mail_to, :subject => "有人對 #{resource.title} 表示有興趣")
   end
 end
