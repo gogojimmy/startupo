@@ -4,6 +4,6 @@
     = f.error_notification
 section.post.form-inputs
   = f.input :title, :label => "文章標題", :input_html => {:class => 'post-inputs span12'}
-  = f.cktext_area :content, :label => "文章內容", :width => "100%", :height => 400, :input_html => {:class => "span12"}
+  = f.input :content, :as => :ckeditor, :label => "文章內容", :width => "100%", :height => 400, :input_html => {:class => "span12", :toolbar => 'Full'}
   = f.input :status, :label => "文章狀態", :collection => Post::STATUS.invert, :as => :radio_buttons, :item_wrapper_class => 'inline'
   = f.submit "新增", :class => 'btn'

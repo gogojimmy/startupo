@@ -1,12 +1,17 @@
 /*
  *= require_self
- *= require_tree .
+ *= require app/app
 */
-@import "bootstrap/simplex";
-@import "bootstrap/bootstrap-responsive";
-@import "font-awesome/css/font-awesome";
+
+@import "bootswatch/simplex/variables";
+@import "bootstrap";
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 60px; }
+
+@import "bootstrap-responsive";
+@import "bootswatch/simplex/bootswatch";
 
 body {
   background: url(http://subtlepatterns.com/patterns/light_wool.png);
-  font-size: 18px;
 }

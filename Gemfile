@@ -37,6 +37,7 @@ gem "ckeditor", "3.7.1"
 gem 'sitemap_generator'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'bootswatch-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
