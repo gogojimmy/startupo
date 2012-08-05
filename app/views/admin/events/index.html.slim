@@ -1,8 +1,8 @@
 div.dashboard.row
-  aside.span2
+  aside.span3
     div.well
       = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-events' }
-  div.span10
+  div.span9
     = link_to I18n.t('event.add_event'), new_admin_event_path, :class => 'btn btn-large btn-success'
     hr
     - @events.each do |event|
@@ -14,4 +14,4 @@ div.dashboard.row
         div.admin-event-name
           h3= link_to event.name, admin_event_path(event)
       hr
-    =will_paginate
+    = will_paginate @events

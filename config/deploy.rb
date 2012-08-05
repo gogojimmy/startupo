@@ -52,6 +52,7 @@ namespace :deploy do
         find_servers_for_task(current_task).each do |server|
           run_locally "rsync -vr --exclude='.DS_Store' public/assets #{user}@#{server.host}:#{shared_path}/"
         end
+        run_locally "rm -rf public/assets/*"
       else
         logger.info "Skipping asset pre-compilation because there were no asset changes"
       end

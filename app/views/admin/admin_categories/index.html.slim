@@ -1,8 +1,8 @@
 div.dashboard.row
-  aside.span2
+  aside.span3
     div.well
       = render :partial => 'admin/dashboards/aside', :locals => { :id => 'admin-categories' }
-  div.span10
+  div.span9
     = link_to "新增欄位", new_admin_admin_category_path, :class => 'btn btn-primary'
     table.table.table-striped.table-condensed.table-bordered
       tr
