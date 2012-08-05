@@ -1,10 +1,12 @@
 doctype html
 html lang="ZH"
   head
+    - if user_signed_in? && @title
+      title = "#{I18n.t('brand')} | #{@title}"
     -if user_signed_in?
       title= "#{I18n.t('brand')} #{I18n.t('brand_description')}"
     -elsif @title
-      title= "#{I18n.t('brand')} | #{I18n.t(@title)}"
+      title= "#{I18n.t('brand')} | #{@title}"
     -else
       title= "#{I18n.t('brand')}"
     link href="/assets/compass/screen.css" media="screen, projection" rel="stylesheet" type="text/css"
@@ -33,7 +35,7 @@ html lang="ZH"
       |
       | </script>
   body
-    nav.navbar.navbar-fixed
+    nav.navbar.navbar-fixed#main-nav
       div.navbar-inner
         div.container
           a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
@@ -47,11 +49,19 @@ html lang="ZH"
                 a href="/resources" #{I18n.t('resources')}
               li
                 a href="/events" #{I18n.t('events')}
+              li
+                a href="/posts" #{I18n.t('posts')}
           - if current_user
-            = render :partial => 'shared/login_nav'
+            div.hidden-phone
+              = render :partial => 'shared/login_nav'
           - else
-            = render :partial => 'shared/not_login_nav'
+            div.hidden-phone
+              = render :partial => 'shared/not_login_nav'
     section.container
+      /div.locale-setting.pull-right
+        /= link_to_unless_current "中文版", locale: "zh_tw"
+        /' |
+        /= link_to_unless_current "English", locale: "en"
       - flash.each do |name, msg|
         div{class="alert alert-#{name == :notice ? "success" : "error"}"}
           a.close data-dismiss="alert" &times;
@@ -64,3 +74,4 @@ html lang="ZH"
             | © 2012
             a href="http://www.startupo.cc"  startupo.cc
             |  All Rights Reserved.
+    = render :partial => 'shared/user_voice'

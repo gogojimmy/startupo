@@ -1,31 +1,32 @@
-@import url(http://fonts.googleapis.com/css?family=Ceviche+One);
+@import "compass/css3/border-radius";
 
-h1.startupo-highlight {
-  font-family: 'Ceviche One', cursive;
-  color: #C30202;
-  font-size: 5em;
+#main-info {
+  padding: 40px 0;
 }
 
-h3.startupo-des {
-  color: #C30202;
+.bigImage {
+  position: relative;
+  background-color: white;
+  background: url(/images/darkgrain.png);
+  padding: 15px;
+  @include border-radius(10px, 10px);
+  .description {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    padding: 7px 20px;
+    background: url(/images/pixel.png);
+    color: white;
+    @include border-radius(5px 5px);
+  }
 }
 
-.upcoming-event {
-  h2 {
-    color: #C30202;
-  }
-  .well-color {
-    background-color: #D8ECF9;
-    height: 310px;
-  }
-  .welcome-events {
-    margin-bottom: 5px;
-  }
-}
-
-.member {
-  margin-bottom: 50px;
-  .member-info {
-    height: 400px;
-  }
+.preview {
+  background: url(/images/darkgrain.png);
+  background-color: white;
+  padding: 5px 15px;
+  min-height: 84px;
+  margin-bottom: 20px;
+  @include border-radius(10px 10px);
 }

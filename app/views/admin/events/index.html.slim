@@ -1,20 +1,17 @@
-head.events
-  h1= I18n.t('event.index')
-hr
-section.event.row
-  div.span8
+div.dashboard.row
+  aside.span2
+    div.well
+      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-events' }
+  div.span10
     = link_to I18n.t('event.add_event'), new_admin_event_path, :class => 'btn btn-large btn-success'
     hr
     - @events.each do |event|
-      div.event
-        div.event-date
-          h2= event.start_time.to_date
-        div.event-pople
-          p= I18n.t('event.attributes.attendees')
-          = event.attendees.count
-        div.event-name
+      div.admin-event
+        div.admin-event-date
+          h2= l event.start_time, :format => :long
+        div.admin-event-pople
+          p 已有 #{event.attendees.count} 人報名
+        div.admin-event-name
           h3= link_to event.name, admin_event_path(event)
-        div.event-join
-          = link_to I18n.t('event.action.count_me_in'), :class => 'btn btn-primary'
       hr
     =will_paginate

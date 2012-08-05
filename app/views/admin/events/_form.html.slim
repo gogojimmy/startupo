@@ -3,18 +3,26 @@
     a.close data-dismiss="alert" href="#" &times;
     = f.error_notification
 section.event.form-inputs
-  = f.input :name, :label => I18n.t('event.attributes.name')
-  = f.input :description, :label => I18n.t('event.attributes.description')
+  = f.input :name, :label => I18n.t('event.attributes.name'), :input_html => {:class => 'span8'}
+  = f.ckeditor :description, :label => I18n.t('event.attributes.description'), :input_html => {:rows => 10, :class => 'span8'}
   = f.input :start_time, :label => I18n.t('event.attributes.start_time')
   = f.input :end_time, :label => I18n.t('event.attributes.end_time')
-  = f.input :address, :label => I18n.t('event.attributes.address')
-  = f.simple_fields_for :images do |p|
-    - if p.object.new_record?
-      = p.input :image, :label => I18n.t('image.attributes.image'), :as => :file
-    - else
-      = image_tag(p.object.image.url(:thumb))
-  = f.simple_fields_for :assets do |z|
-    = z.input :asset, :label => I18n.t('asset.attributes.file'), :as => :file
+  = f.input :address, :label => I18n.t('event.attributes.address'), :input_html => {:class => 'span8'}
+  = f.input :price, :label => '費用', :input_html => {:class => 'span8'}
+  = f.input :is_open, :label => '是否發佈到前台'
+  /= f.simple_fields_for :images do |p|
+    /- if p.object.new_record?
+      /= p.input :image, :label => I18n.t('image.attributes.image'), :as => :file
+    /- else
+      /= image_tag(p.object.image.url(:thumb))
+      /'
+      /= p.check_box :_destroy, :label => '刪除'
+  /= f.simple_fields_for :assets do |z|
+    /- if z.object.new_record?
+      /= z.input :file, :label => I18n.t('asset.attributes.file'), :as => :file
+    /- else
+      /= z.object.file_file_name
+      /'
+      /= z.check_box :_destroy, :label => '刪除'
 div.form-actions
   = f.submit I18n.t('action.save'), :class => 'btn btn-primary'
-

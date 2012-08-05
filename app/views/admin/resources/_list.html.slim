@@ -5,10 +5,31 @@ table.table.table-striped.table-condensed.table-bordered
     th= I18n.t('resource.attributes.to_public')
     th= I18n.t('resource.attributes.title')
     th= I18n.t('resource.attributes.description')
+    th= I18n.t('resource.matcher.count')
   - @resources.each do |resource|
     tr
-      td.resource-state= resource.state
-      td.resource-assignee= resource.assignee.name
+      td.resource-state
+        - if resource.state = "proccessing"
+          span.badge.badge-success= t resource.state
+        - elsif resource.state = "pending"
+          span.badge.badge-warning= t.resource.state
+        - elsif resource.state = "denied"
+          span.badge.badge-improtant= t.resource.state
+        - else
+          span.badge= t.resource.state
+      - if resource.assignee
+        td.resource-assignee= resource.assignee.name
+      - else
+        td 未指定處理人員
       td.resource-to_public= resource.to_public
       td.resource-name= link_to resource.title, admin_resource_path(resource)
       td.resource-description= resource.description
+      td.reosurce-matchers
+        - if resource.matchers.count <= 5
+            span.badge= resource.matchers.count
+        - elsif resource.matchers.count > 5 && resource.matchers.count <= 10
+            span.badge.badge-success= resource.matchers.count
+        - elsif resource.matchers.count > 10 && resource.matchers.count <= 50
+            span.badge.badge-important= resouce.matchers.count
+        - elsif resource.matchers.count > 50 && resource.matchers.count <= 100
+            span.badge.badge-info= resouce.matchers.count

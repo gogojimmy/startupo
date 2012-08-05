@@ -1,23 +1,31 @@
 section.event.row
-  div.span9
+  div.span12
+    div.events-header.hero-unit
+      h1 史塔波有著最多的商機媒合活動
+      p.hero-desc
+        | 史塔波，不只是放在網路上相互交流的資源，更有實體活動認識彼此,我們不定時舉辦邀請制的高階聯誼會,讓您在史塔波認識更多人脈
+  div.span12
     - @events.each do |event|
       div.event.row-fluid
         div.event-image-thumb.span2
-          = image_tag(event.first_image.url(:medium), :class => 'event-image-thumb')
+          = image_tag(event.first_image.url(:medium), :class => 'event-image-thumb') if event.first_image
         div.span7
           div.event-date
             h2= l event.start_time.to_date, :format => '%b %d'
           div.event-name
-            h2= link_to event.name, admin_event_path(event)
+            h2= link_to event.name, event_path(event)
           div.event-location
             small 地點: #{event.address}
           div.event-description
             = simple_format truncate(event.description, :length => 150)
         div.event-join.span3
-          = link_to event_join_path(event), :class => 'join-event-btn btn btn-primary btn-large' do
-            i class="icon-large icon-check"
-            |  我要參加
-          h2.event-attendees-count #{event.attendees.count}
-          strong.event-attendees-des 個參加者
+          - if current_user && event.attendees.include?(current_user)
+            = link_to I18n.t('event.action.joined'), '', :class => 'btn btn-danger btn-large', :disabled => true
+          - else
+            = link_to event_join_path(event), :method => :put, :class => 'join-event-btn btn btn-primary btn-large' do
+              i class="icon-large icon-check"
+              |  我要參加
+          /h2.event-attendees-count #{event.attendees.count}
+          /strong.event-attendees-des 個參加者
       hr
     = will_paginate @events

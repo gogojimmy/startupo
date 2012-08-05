@@ -32,6 +32,11 @@ gem 'haml2slim'
 gem 'devise'
 gem 'will_paginate'
 gem 'geocoder'
+gem 'exception_notification'
+gem "ckeditor", "3.7.1"
+gem 'sitemap_generator'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 # Deploy with Capistrano
 gem 'capistrano'

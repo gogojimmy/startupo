@@ -9,20 +9,29 @@ section.event.row
       tr
         td width="60px"= I18n.t('event.attributes.duration')
         td.event_description= "#{l(@event.start_time, :format => :long)} #{I18n.t('to')} #{l(@event.end_time, :format => :long)}"
-    div.event-images
-      - @event.images.each do |image|
-        = image_tag(image.image.url(:medium), :class => "image")
-    div.event-files
-      - @event.assets.each do |asset|
-        = link_to "#{I18n.t('action.download')} #{asset.attachment_file_name}", asset.file.url
+      tr
+        td width="60px" 活動地點
+        td.event_address= @event.address
+      - if @event.price
+        tr
+          td width="60px"= '活動費用'
+          td.event_price= @event.price
+    /div.event-images
+      /- @event.images.each do |image|
+        /= image_tag(image.image.url(:medium), :class => "image")
+    /header.page-header
+      /h1 附件
+    /div.event-files
+      /- @event.assets.each do |asset|
+        /= link_to "#{asset.file_file_name}", asset.file.url
   aside.event-aside.span4
     div.event-action
       = show_join_button(@event, current_user)
     div.event-map
       div.well
-        h2= I18n.t('event.attributes.address')
+        h2 地圖
         br
         = link_to(image_tag(show_google_map(@event.latitude, @event.longitude), :id => "google-static-map"), link_to_google_map(@event.latitude, @event.longitude), :target => "_blank")
 section.event.actions
-  - if current_user.is_admin?
+  - if current_user && current_user.is_admin?
     = link_to I18n.t('event.update_this_event'), edit_admin_event_path(@event), :class => 'btn btn-primary'

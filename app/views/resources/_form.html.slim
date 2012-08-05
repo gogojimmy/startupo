@@ -2,16 +2,44 @@
   div.alert.alert-error.fade.in
     a.close data-dismiss="alert" href="#" &times;
     = f.error_notification
-section.resource.form-inputs
-  = f.input :title, :label => I18n.t('resource.attributes.title'), :input_html => {:class => 'resource-inputs', 'data-content' => '請定義您的資源名稱,例如: 某地稀土協尋買家, 某技術找尋資金', 'data-original-title' => '資源名稱如何寫？'}
-  = f.input :have_resource, :label => I18n.t('resource.attributes.have_resource')
-  = f.input :find_resource, :label => I18n.t('resource.attributes.find_resource')
-  = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name, :class => 'resource-inputs', 'data-content' => '史塔波平台在收到您的需求時會和您電話聯絡,若您需要提供另外的聯絡人,請在此告知我們', 'data-original-title' => '聯絡人該如何寫？' }
-  = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile, :class => 'resource-inputs', 'data-content' => '若您提供的聯絡電話非資料中提供的,請在此告知我們', 'data-original-title' => '聯絡電話該如何寫？'}
-  = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email, :class => 'resource-inputs', 'data-content' => '若您提供的Email非資料中提供的,請在此告知我們', 'data-original-title' => 'Email 該如何寫？' }
-  = f.input :description, :label => I18n.t('resource.attributes.description'), :input_html => {:class => 'resource-inputs', 'data-content' => '史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請詳細敍述您想找的資源', 'data-original-title' => '資源描述該怎麼寫？', :rows => 5}
-  = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons, :item_wrapper_class =>'inline', :hint => '您可以選擇資源公開於網站上,或針對特定族群發佈'
-  = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes, :item_wrapper_class =>'inline', :hint => ' 史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請先定義您的資源內容, 可以複選'
-  = f.association :cooperate_ways, :label => I18n.t('resource.attributes.cooperate_ways'), :as => :check_boxes, :item_wrapper_class =>'inline', :hint => '史塔波平台提供以下合作方式, 請選擇您覺得適當的方式, 勾選, 可複選 : 個案配合/代銷/加盟/貿易/委託製造/技術合作/融資/尋找執行團隊/學術合作/其他(70字元)'
-div.form-actions
-  = f.submit I18n.t('action.save'), :class => 'btn btn-primary'
+div.row
+  div.span7
+    section.resource.form-inputs
+      = f.input :title, :label => I18n.t('resource.attributes.title'), :input_html => {:class => 'resource-inputs', 'data-content' => '請定義您的資源名稱,例如: 某地稀土協尋買家, 某技術找尋資金', 'data-original-title' => '資源名稱如何寫？'}
+      = f.input :have_resource, :label => I18n.t('resource.attributes.have_resource')
+      = f.input :find_resource, :label => I18n.t('resource.attributes.find_resource')
+      = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name, :class => 'resource-inputs', 'data-content' => '史塔波平台在收到您的需求時會和您電話聯絡,若您需要提供另外的聯絡人,請在此告知我們', 'data-original-title' => '聯絡人該如何寫？' }
+      = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile, :class => 'resource-inputs', 'data-content' => '若您提供的聯絡電話非資料中提供的,請在此告知我們', 'data-original-title' => '聯絡電話該如何寫？'}
+      = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email, :class => 'resource-inputs', 'data-content' => '若您提供的Email非資料中提供的,請在此告知我們', 'data-original-title' => 'Email 該如何寫？' }
+      = f.input :description, :label => I18n.t('resource.attributes.description'), :input_html => {:class => 'resource-inputs', 'data-content' => '史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請詳細敍述您想找的資源', 'data-original-title' => '資源描述該怎麼寫？', :rows => 5}
+      = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons, :item_wrapper_class =>'inline', :hint => '您可以選擇資源公開於網站上,或針對特定族群發佈'
+      = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes, :item_wrapper_class =>'inline', :hint => ' 史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請先定義您的資源內容, 可以複選'
+      div.control-group
+        div.controls
+          a.btn.btn-primary data-toggle="modal" href="#resourceTypeModal" 不知道如何選擇資源種類？
+      = f.association :cooperate_ways, :label => I18n.t('resource.attributes.cooperate_ways'), :as => :check_boxes, :item_wrapper_class =>'inline', :hint => '史塔波平台提供以下合作方式, 請選擇您覺得適當的方式, 勾選, 可複選 : 個案配合/代銷/加盟/貿易/委託製造/技術合作/融資/尋找執行團隊/學術合作/其他(70字元)'
+    div.form-actions
+      = f.submit I18n.t('action.save'), :class => 'btn btn-primary'
+  div.modal.hide.fade#resourceTypeModal
+    div.modal-header
+      a.close data-dismiss="modal" x
+      h3 史塔波上的資源種類
+    div.modal-body
+      ul
+        li 團隊(人才) : 您可要求找尋一個特殊人才, 或是一個團隊 - 史塔波平台有專屬的高階獵頭團隊負責協助您的企業找到適合的人才或團隊, 人才計價以年薪計算
+        li 供應商: 您想找到適合您的通路的產品供應商, 史塔波平台會先瞭解您的通路特性提供您產品建議後安排供應商與您合作
+        li 特殊人脈資源 : 您的生意也許需要特殊的人脈關係, 史塔波平台會協助您找到您想要的人脈資源
+        li 製造技術: 您想找到適合的製造技術, 史塔波平台會先了解您的需求後提供協助
+        li 營銷策略: 您的產品可能要進入新的市場, 您想了解當地適合的營銷方式, 或找到適合的策略夥伴, 史塔波平台能夠協助您
+        li 通路: 您有產品但沒通路? 沒關係, 史塔波平台能夠協助您
+        li 媒體: 您需要媒體策略或是媒體計劃, 請找史塔波
+        li 資金: 您的生意需要新增資金, 不論大生意, 小生意, 本國生意或跨國生意, 史塔波都能協助您找到最佳資金來源
+  aside.span5
+    div.well
+      head
+        h2 史塔波的收費標準
+      hr
+      ul
+        li 商機媒合: 您有特殊商機需要找到買家, 史塔波平台將協助您找到買家, 安排見面會議, 不介入談判內容, 我們收費每次(國內十萬元), (國外二十萬元)
+        li 市值評估: 史塔波平台提供最適合您產業的專業鑑價顧問, 不論您的公司在台灣或是大陸, 此部份費用依據您的企業規模進行報價
+        li 協尋資源:史塔波平台協助以下資源 ( 團隊(人才) / 供應商/ 特殊人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金 )依據資源的規模進行報價(5-20%服務費), 再進行合約簽定

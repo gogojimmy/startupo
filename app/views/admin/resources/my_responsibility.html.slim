@@ -1,7 +1,7 @@
-head.resources
-  h1= I18n.t('resource.index')
-hr
-section.resource.row
-  div.span8
+div.dashboard.row
+  aside.span2
+    div.well
+      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-my_responsibility' }
+  div.span10
     = render 'list'
     =will_paginate

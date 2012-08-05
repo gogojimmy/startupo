@@ -22,7 +22,7 @@ module Startup
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/models/ckeditor)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -64,5 +64,13 @@ module Startup
 
     # Slim
     Slim::Engine.set_default_options :pretty => true
+
+    $EMAIL_CONFIG = ActiveSupport::HashWithIndifferentAccess.new YAML.load(File.open("#{Rails.root}/config/email.yml"))[Rails.env]
+
+    config.action_mailer.default_url_options = { :host => $EMAIL_CONFIG[:host] }
+
+    # convert hash's keys from string to symbol, or it would raise error
+    config.action_mailer.smtp_settings = $EMAIL_CONFIG[:smtp].symbolize_keys if !$EMAIL_CONFIG[:smtp].nil?
+
   end
 end

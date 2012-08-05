@@ -7,12 +7,13 @@ html lang="ZH"
       title= "#{I18n.t('brand')} | #{I18n.t(@title)}"
     -else
       title= "#{I18n.t('brand')}"
-    link href="/assets/compass/screen.css" media="screen, projection" rel="stylesheet" type="text/css"
-    link href="/assets/compass/print.css" media="print" rel="stylesheet" type="text/css"
+    = stylesheet_link_tag "compass/screen", :media => "screen projection"
+    = stylesheet_link_tag "compass/print", :media => "print"
     /[ if lt IE 9 ]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
+    = javascript_include_tag "admin/admin"
+    = javascript_include_tag 'ckeditor/ckeditor'
     = csrf_meta_tags
     meta name="viewport" content="width=device-width" initial-scale="1.0"
     meta charset="UTF-8"

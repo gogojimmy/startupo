@@ -12,6 +12,7 @@ h2= I18n.t('user.devise.sign_up')
     = f.input :company, :label => I18n.t('user.attributes.company')
     = f.input :title, :label => I18n.t('user.attributes.title')
     = f.input :address, :label => I18n.t('user.attributes.address')
+    = f.input :industry, :label => I18n.t('user.attributes.industry'), :collection => User::INDUSTRY.invert, :include_blank => false
   .actions
     = f.button :submit, I18n.t('user.devise.sign_up'), :class => 'btn btn-success'
 = render "links"

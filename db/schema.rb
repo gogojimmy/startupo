@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523175945) do
+ActiveRecord::Schema.define(:version => 20120710032501) do
 
   create_table "admin_categories", :force => true do |t|
     t.string   "name"
@@ -34,14 +34,32 @@ ActiveRecord::Schema.define(:version => 20120523175945) do
 
   add_index "assets", ["event_id"], :name => "index_assets_on_event_id"
 
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "resource_id"
     t.text     "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "post_id"
   end
 
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
   add_index "comments", ["resource_id"], :name => "index_comments_on_resource_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
@@ -52,6 +70,22 @@ ActiveRecord::Schema.define(:version => 20120523175945) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -59,10 +93,12 @@ ActiveRecord::Schema.define(:version => 20120523175945) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "address"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "price"
+    t.boolean  "is_open",     :default => true
   end
 
   create_table "images", :force => true do |t|
@@ -88,6 +124,18 @@ ActiveRecord::Schema.define(:version => 20120523175945) do
 
   add_index "join_event_attendee_ships", ["event_id"], :name => "index_join_event_attendee_ships_on_event_id"
   add_index "join_event_attendee_ships", ["user_id"], :name => "index_join_event_attendee_ships_on_user_id"
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "status"
+    t.integer  "user_id"
+  end
+
+  add_index "posts", ["status"], :name => "index_posts_on_status"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "resource_admin_category_ships", :force => true do |t|
     t.integer  "resource_id"
@@ -175,9 +223,11 @@ ActiveRecord::Schema.define(:version => 20120523175945) do
     t.datetime "updated_at",                                :null => false
     t.string   "address"
     t.integer  "confirmed_by"
+    t.string   "industry"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["industry"], :name => "index_users_on_industry"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

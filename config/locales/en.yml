@@ -1,5 +1,382 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  public: 'Public'
+  draft: 'Draft'
+  closed: 'Cloed'
+  proccessing: 'Proccessing'
+  pending: 'Pending'
+  denied: 'denied'
+  done: 'done'
+  brand: 'Startupo'
+  brand_description: ''
+  about: 'About Startupo'
+  resources: 'Resources'
+  events: 'Events'
+  available_events: 'Available Events'
+  s: "'s"
+  contacting: 'Contactin'
+  deny: 'Deny'
+  matched: '就確定是你了'
+  posts: 'Articles'
+  post:
+    add_post: '新增文章'
+    author: '作者'
+    delete_post: '刪除文章'
+  action:
+    edit: 'Edit'
+    save: 'Save'
+    delete: 'Delete'
+    update_successful: 'Successfully updated'
+    create_successful: 'Successfully created'
+    destroy_successful: 'Successfully deleted'
+    show_more: 'Show more'
+    update_this_resource: 'Edit this resource'
+    make_request: 'Request for this'
+    actions: 'Actions'
+    download: 'Download'
+  to: '到'
+  user:
+    attributes:
+      name: 'name'
+      email: 'email'
+      id_no: 'ID'
+      birthday: 'Birthday'
+      company: 'Company name'
+      title: 'Title'
+      password: 'Password'
+      password_confirmation: 'Password confirm'
+      new_password: 'New Password'
+      confirm_new_password: 'Confirm new password'
+      mobile: 'Mobile'
+      address: 'Address'
+      industry: 'Industry'
+    dashboard:
+      manage_my_profile: 'My Profile'
+    my_profile: 'My Profile'
+    my_integrety: 'Profile Integrety'
+    my_requests: 'My Requests'
+    my_wants: 'Resource I want'
+    my_attendings: 'My attending events'
+    incoming_event: 'Incoming event'
+    change_password: 'Change password'
+    not_yet_confirm: 'Your account is not confirm, yet. We will proceed soon'
+    forget_your_password?: 'Forget your password?'
+    email: 'Email'
+    send_me_reset_password_instructions: 'Resend reset password instruct'
+    devise:
+      sign_up: 'Sign up'
+      sign_in: 'Sign in'
+      sign_out: 'Sign out'
+      remember_me: 'Remember me'
+      forget_password?: 'Forget your passowrd？'
+  admin:
+    dashboard:
+      created_at: '建立於'
+      updated_at: '上次處理時間'
+      panel: '管理者後台'
+      unconfirmed_users: '待確認的用戶'
+      unapproved_requests: '待分配的資源'
+      my_responsibility: '我處理的資源'
+      events: '活動列表'
+      event_name: '活動名稱'
+      resources: '所有資源'
+    action:
+      confirm_user: '確認為正式用戶'
+      deny_user: '拒絕此用戶'
+    message:
+      user_confirmed: '用戶確認成功'
+      user_confirm_failed: '用戶確認失敗'
+    column:
+      apply_at: '申請時間'
+  resource_type:
+    attributes:
+      name: '種類名稱'
+      description: '描述'
+    back_to_index: '回資源種類列表'
+    new: '新增資源種類'
+    show: '資源種類'
+    index: '資源種類列表'
+    edit: '修改資源種類'
+  resource:
+    comment:
+      create: "%{user} 建立了資源"
+    attributes:
+      user: '申請人'
+      assign_to: '指派處理人'
+      title: '資源名稱'
+      description: '資源描述'
+      have_resource: '我有資源'
+      find_resource: '我找資源'
+      contact: '聯絡人'
+      phone: '聯絡電話'
+      email: 'Email'
+      state: '處理狀態'
+      privacy: '資源發佈方式'
+      types: '資源種類'
+      cooperate_ways: '合作方式'
+      admin_categories: '管理員自定欄位'
+      contract_state: '合約狀態'
+      to_public: '是否發佈到前台'
+      matchers: '媒合清單'
+      apply_date: '申請日期'
+      matcher: '申請人'
+    matcher:
+      match_it: '就是他了'
+      deny_it: '他不行'
+      contact_it: '聯絡他'
+      statuses: '處理狀態'
+      add: '增加媒合者'
+      choose_matcher: '選擇媒合者'
+      status:
+        contacting: '聯絡中'
+        pending: '待查'
+        matched: '已媒合'
+      count: '媒合者數量'
+    index: '資源列表'
+    new: '新增資源請求'
+    back_to_index: '回資源列表'
+    pending_requests: '尚未被處理的資源申請'
+    i_want_it: '我有興趣'
+    already_wanted: '已加入媒合清單'
+    message:
+      request_sent: '您的申請已經送出，我們會以最快的速度回復您的申請'
+      update_successful: '更新成功'
+      add_to_wants: '感謝您，史塔波會儘快處理你的媒合'
+    assign_to_admin: '指派管理者'
+    set_state: '設定處理狀態'
+  admin_category:
+    attributes:
+      name: '管理員自定欄位名稱'
+      description: '管理員自定欄位描述'
+    back_to_index: '回欄位列表'
+    new: '新增管理員自定欄位種類'
+    index: '管理員自定欄位列表'
+    edit: '修改管理員自定欄位'
+  event:
+    attributes:
+      user: '建立者'
+      name: '活動名稱'
+      description: '活動敘述'
+      start_time: '開始時間'
+      end_time: '結束時間'
+      duration: '活動時間'
+      image: '圖片'
+      asset: '附件'
+      address: '地點'
+      attendees: '報名人數'
+    index: '活動列表'
+    add_event: '建立活動'
+    new: '新增活動'
+    back_to_index: '回活動列表'
+    update_this_event: '編輯這個活動'
+    action:
+      count_me_in: '我要參加'
+      joined: '已參加'
+    message:
+      join_successful: '參加成功'
+  image:
+    attributes:
+      image: '圖片'
+  asset:
+    attributes:
+      file: '附件'
+  comment:
+    update_message: "%{user} 將 %{attr} 從 %{from} 更改為 %{to}"
+    created_successful: '留言新增成功'
+  date:
+    abbr_day_names:
+    - 日
+    - 一
+    - 二
+    - 三
+    - 四
+    - 五
+    - 六
+    abbr_month_names:
+    -
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    day_names:
+    - 星期日
+    - 星期一
+    - 星期二
+    - 星期三
+    - 星期四
+    - 星期五
+    - 星期六
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%Y年%b%d日'
+      short: ! '%b%d日'
+    month_names:
+    -
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 大約一小時
+        other: 大約 %{count} 小時
+      about_x_months:
+        one: 大約一個月
+        other: 大約 %{count} 個月
+      about_x_years:
+        one: 大約一年
+        other: 大約 %{count} 年
+      almost_x_years:
+        one: 接近一年
+        other: 接近 %{count} 年
+      half_a_minute: 半分鐘
+      less_than_x_minutes:
+        one: 不到一分鐘
+        other: 不到 %{count} 分鐘
+      less_than_x_seconds:
+        one: 不到一秒
+        other: 不到 %{count} 秒
+      over_x_years:
+        one: 一年多
+        other: ! '%{count} 年多'
+      x_days:
+        one: 一天
+        other: ! '%{count} 天'
+      x_minutes:
+        one: 一分鐘
+        other: ! '%{count} 分鐘'
+      x_months:
+        one: 一個月
+        other: ! '%{count} 個月'
+      x_seconds:
+        one: 一秒
+        other: ! '%{count} 秒'
+    prompts:
+      day: 日
+      hour: 時
+      minute: 分
+      month: 月
+      second: 秒
+      year: 年
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: 必須是可被接受的
+      blank: 此為必填欄位
+      confirmation: 不符合確認值
+      empty: 不能留空
+      equal_to: 必須等於 %{count}
+      even: 必須是偶數
+      exclusion: 是被保留的關鍵字
+      greater_than: 必須大於 %{count}
+      greater_than_or_equal_to: 必須大於或等於 %{count}
+      inclusion: 沒有包含在列表中
+      invalid: 是無效的
+      less_than: 必須小於 %{count}
+      less_than_or_equal_to: 必須小於或等於 %{count}
+      not_a_number: 不是數字
+      not_an_integer: 必須是整數
+      odd: 必須是奇數
+      record_invalid: ! '校驗失敗: %{errors}'
+      taken: 已經被使用
+      too_long: 過長（最長是 %{count} 個字）
+      too_short: 過短（最短是 %{count} 個字）
+      wrong_length: 字數錯誤（必須是 %{count} 個字）
+    template:
+      body: 以下欄位發生問題：
+      header:
+        one: 有 1 個錯誤發生使得「%{model}」無法被儲存。
+        other: 有 %{count} 個錯誤發生使得「%{model}」無法被儲存。
+  helpers:
+    select:
+      prompt: 請選擇
+    submit:
+      create: 新增%{model}
+      submit: 儲存%{model}
+      update: 更新%{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u %n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: NT$
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: 十億
+          million: 百萬
+          quadrillion: 千兆
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', 和 '
+      two_words_connector: ! ' 和 '
+      words_connector: ! ', '
+  time:
+    am: 上午
+    formats:
+      default: ! '%Y年%b%d日 %A %H:%M:%S %Z'
+      long: ! '%Y年%b%d日 %H:%M'
+      short: ! '%b%d日 %H:%M'
+    pm: 下午
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors

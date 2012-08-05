@@ -1,11 +1,26 @@
 zh_tw:
+  public: '公開'
+  draft: '草稿'
+  closed: '關閉'
+  proccessing: '處理中'
+  pending: '未處理'
+  denied: '已拒絕'
+  done: '已結案'
   brand: '史塔波'
-  brand_description: '最豐富的企業資源平台'
+  brand_description: '資源整合平台'
   about: '關於史塔波'
   resources: '資源'
   events: '活動'
   available_events: '可參加的活動'
   s: '的'
+  contacting: '聯絡中'
+  deny: '拒絕'
+  matched: '就確定是你了'
+  posts: '史塔波訊息'
+  post:
+    add_post: '新增文章'
+    author: '作者'
+    delete_post: '刪除文章'
   action:
     edit: '修改'
     save: '儲存'
@@ -17,6 +32,7 @@ zh_tw:
     update_this_resource: '編輯這個資源'
     make_request: '尋求媒合機會'
     actions: '操作'
+    download: '下載'
   to: '到'
   user:
     attributes:
@@ -32,6 +48,7 @@ zh_tw:
       confirm_new_password: '新密碼確認'
       mobile: '手機'
       address: '地址'
+      industry: '產業別'
     dashboard:
       manage_my_profile: '管理我的資料'
     my_profile: '的個人資料'
@@ -46,7 +63,7 @@ zh_tw:
     email: 'Email'
     send_me_reset_password_instructions: '寄送重設密碼信給我'
     devise:
-      sign_up: '加入史塔波'
+      sign_up: '註冊史塔波帳號'
       sign_in: '登入'
       sign_out: '登出'
       remember_me: '記住我'
@@ -61,6 +78,7 @@ zh_tw:
       my_responsibility: '我處理的資源'
       events: '活動列表'
       event_name: '活動名稱'
+      resources: '所有資源'
     action:
       confirm_user: '確認為正式用戶'
       deny_user: '拒絕此用戶'
@@ -79,6 +97,8 @@ zh_tw:
     index: '資源種類列表'
     edit: '修改資源種類'
   resource:
+    comment:
+      create: "%{user} 建立了資源"
     attributes:
       user: '申請人'
       assign_to: '指派處理人'
@@ -110,6 +130,7 @@ zh_tw:
         contacting: '聯絡中'
         pending: '待查'
         matched: '已媒合'
+      count: '媒合者數量'
     index: '資源列表'
     new: '新增資源請求'
     back_to_index: '回資源列表'

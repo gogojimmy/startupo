@@ -1,12 +1,12 @@
-head.resource
-  h1= @resource.title
 section.resource.row
-  div.resource-row.span8
+  div.resource-row.span9
+    head.resource.page-header
+      h1= @resource.title
     div.well.resource-well
-      h2= @resource.description
-  aside.funcion.span4
+      h2= simple_format @resource.description
+  aside.funcion.span3
     = show_want_button(@resource, current_user)
-  div.resource-matchers-count.span4
-    h1
-      = @resource.matchers.count
-    p 個人對這個資源有興趣
+  /div.resource-matchers-count.span4
+    /h1
+      /= @resource.matchers.count
+    /p 個人對這個資源有興趣

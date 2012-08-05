@@ -12,12 +12,14 @@ class Event < ActiveRecord::Base
   after_validation :geocode
 
   scope :available, where(["start_time > ?", Time.now])
+  scope :opened, where(:is_open => true)
 
   def join(user)
     JoinEventAttendeeShip.create!(:user_id => user.id, :event_id => self.id)
   end
 
   def first_image
+    return false if self.images.count == 0
     self.images.first.image
   end
 end

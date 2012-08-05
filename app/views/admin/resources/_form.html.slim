@@ -10,9 +10,14 @@ section.resource.form-inputs
   = f.input :title, :label => I18n.t('resource.attributes.title')
   = f.input :have_resource, :label => I18n.t('resource.attributes.have_resource')
   = f.input :find_resource, :label => I18n.t('resource.attributes.find_resource')
-  = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name }
-  = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile }
-  = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email }
+  - if @resource.contact
+    = f.input :contact, :label => I18n.t('resource.attributes.contact')
+    = f.input :phone, :label => I18n.t('resource.attributes.phone')
+    = f.input :email, :label => I18n.t('resource.attributes.email')
+  - else
+    = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name }
+    = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile }
+    = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email }
   = f.input :description, :label => I18n.t('resource.attributes.description')
   = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons
   = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes

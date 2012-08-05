@@ -1,0 +1,16 @@
+section.welcome-page
+  div#main-info
+    div.container
+      div.row
+        div.span8
+          div.bigImage
+            = image_tag('/images/promo.jpg')
+            div.description
+              p 史塔波是讓您夢想啟動的平台， 把我們的資源和夢想放上來，讓朋友們一起啟動夢想的資源。
+        div.span4
+          h2 最新的媒合活動
+          - @upcoming_events.each do |event|
+            = link_to event_path(event), :class => 'upcoming-event' do
+              div.preview
+                h3= event.name
+                p= event.description[0..35] + "..."

@@ -18,3 +18,6 @@
 
 /config/database.yml
 /public/system/
+/public/ckeditor_assets/
+/mysql_backup/
+/public/assets/

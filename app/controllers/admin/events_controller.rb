@@ -1,12 +1,13 @@
 class Admin::EventsController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_admin!
 
   def new
     @event = Event.new
-    2.times do
-      @event.assets.build
-      @event.images.build
-    end
+    #2.times do
+      #@event.assets.build
+      #@event.images.build
+    #end
   end
 
   def create
@@ -34,10 +35,6 @@ class Admin::EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    2.times do
-      @event.assets.build
-      @event.images.build
-    end
   end
 
   def update

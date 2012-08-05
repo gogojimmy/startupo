@@ -1,0 +1,33 @@
+div.dashboard.row
+  aside.span2
+    div.well
+      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-users' }
+  div.span10
+    div.resource.filter
+      ul class="nav nav-pills" id="resource-tabs"
+        li id="all"= link_to "所有", admin_users_path
+        li id="culture"= link_to '文創產業', admin_users_path(:type => 'culture')
+        li id="digital"= link_to '數位產業', admin_users_path(:type => 'digital')
+        li id="it"= link_to 'IT 產業', admin_users_path(:type => 'it')
+        li id="tradition"= link_to '傳統產業', admin_users_path(:type => 'tradition')
+        li id="high-tech"= link_to '高科技產業', admin_users_path(:type => 'high-tech')
+        li id="green"= link_to '綠色產業', admin_users_path(:type => 'green')
+        li id="health"= link_to '健康產業', admin_users_path(:type => 'health')
+    table.table.table-bordered.table-striped.table-condensed
+      thead
+        tr
+          td= I18n.t('admin.column.apply_at')
+          td= I18n.t('user.attributes.name')
+          td email
+          td 權限
+      tbody
+      - @users.each do |user|
+        tr
+          td= user.created_at.to_date
+          td= link_to user.name, admin_user_path(user)
+          td= user.email
+          - if user.is_admin?
+            td 管理員
+          - else
+            td= link_to '提升為管理員', "upgrade/#{user.id}", :method => :put, :class => 'btn btn-primary'
+    = will_paginate

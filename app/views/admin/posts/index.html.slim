@@ -1,0 +1,22 @@
+div.dashboard.row
+  aside.span3
+    div.well
+      = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-posts' }
+  div.span9
+    = link_to I18n.t('post.add_post'), new_admin_post_path, :class => 'btn btn-large btn-success'
+    br
+    table.table
+      tr
+        th 文章ID
+        th 文章狀態
+        th 作者
+        th 文章標題
+        th 最後更新時間
+      - @posts.each do |post|
+        tr
+          td= post.id
+          td= t post.status
+          td= post.author.name
+          td= link_to post.title, admin_post_path(post)
+          td= l post.updated_at, :format => :short
+    = will_paginate @posts
