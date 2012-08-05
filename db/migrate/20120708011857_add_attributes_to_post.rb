@@ -3,6 +3,6 @@ class AddAttributesToPost < ActiveRecord::Migration
     add_column :posts, :status, :string
     add_column :posts, :user_id, :integer
     add_index :posts, :user_id
-    add_index :status
+    add_index :posts, :status
   end
 end

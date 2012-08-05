@@ -49,6 +49,8 @@ html lang="ZH"
                 a href="/resources" #{I18n.t('resources')}
               li
                 a href="/events" #{I18n.t('events')}
+              li
+                a href="/posts" #{I18n.t('posts')}
           - if current_user
             div.hidden-phone
               = render :partial => 'shared/login_nav'
@@ -56,6 +58,10 @@ html lang="ZH"
             div.hidden-phone
               = render :partial => 'shared/not_login_nav'
     section.container
+      /div.locale-setting.pull-right
+        /= link_to_unless_current "中文版", locale: "zh_tw"
+        /' |
+        /= link_to_unless_current "English", locale: "en"
       - flash.each do |name, msg|
         div{class="alert alert-#{name == :notice ? "success" : "error"}"}
           a.close data-dismiss="alert" &times;

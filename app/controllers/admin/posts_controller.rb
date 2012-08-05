@@ -1,5 +1,6 @@
 #encoding: utf-8
 class Admin::PostsController < ApplicationController
+  layout 'admin'
   before_filter :authenticate_admin!
 
   def index
@@ -30,7 +31,8 @@ class Admin::PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(params[:post])
+    @post = Post.new(params[:post])
+    @post.author = current_user
 
     if @post.save
       flash[:notice] = "文章新增成功"

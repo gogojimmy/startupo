@@ -1,0 +1,8 @@
+div.row
+  div.page-header
+    h1
+      ' #{@post.title}
+      small= l @post.created_at, :format => :short
+  div.post-content
+    = link_to "編輯這篇文章", edit_admin_post_path(@post), :class => 'btn btn-primary' if current_user.try(:is_admin?)
+    = simple_format @post.content
