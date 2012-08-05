@@ -3,14 +3,8 @@
  *= require app/app
 */
 
-@import "bootswatch/simplex/variables";
-@import "bootstrap";
-
-// Bootstrap body padding for fixed navbar
-body { padding-top: 60px; }
-
-@import "bootstrap-responsive";
-@import "bootswatch/simplex/bootswatch";
+@import "bootstrap/bootstrap-simplex";
+@import "font-awesome/css/font-awesome";
 
 body {
   background: url(http://subtlepatterns.com/patterns/light_wool.png);

@@ -18,7 +18,7 @@ html lang="ZH"
     meta name="viewport" content="width=device-width" initial-scale="1.0"
     meta charset="UTF-8"
   body
-    nav.navbar.navbar-fixed
+    nav.navbar.navbar-fixed-top
       div.navbar-inner
         div.container
           a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
@@ -38,7 +38,7 @@ html lang="ZH"
             = render :partial => 'shared/login_nav'
           - else
             = render :partial => 'shared/not_login_nav'
-    section.container
+    section.container-fluid
       - flash.each do |name, msg|
         div{class="alert alert-#{name == :notice ? "success" : "error"}"}
           a.close data-dismiss="alert" &times;

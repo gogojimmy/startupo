@@ -35,7 +35,7 @@ html lang="ZH"
       |
       | </script>
   body
-    nav.navbar.navbar-fixed#main-nav
+    nav.navbar.navbar-fixed-top#main-nav
       div.navbar-inner
         div.container
           a.btn.btn-navbar data-toggle="collapse" data-target=".nav-collapse"
@@ -62,11 +62,11 @@ html lang="ZH"
         /= link_to_unless_current "中文版", locale: "zh_tw"
         /' |
         /= link_to_unless_current "English", locale: "en"
-      - flash.each do |name, msg|
-        div{class="alert alert-#{name == :notice ? "success" : "error"}"}
-          a.close data-dismiss="alert" &times;
-          = simple_format(msg)
-      article
+      article.row-fluid
+        - flash.each do |name, msg|
+          div{class="alert alert-#{name == :notice ? "success" : "error"}"}
+            a.close data-dismiss="alert" &times;
+            = simple_format(msg)
         = yield
       hr
         footer.footer

@@ -15,6 +15,7 @@ group :assets do
   gem 'compass'
   gem 'compass-rails'
   gem 'bootstrap-sass'
+  gem 'bootswatch-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -37,7 +38,6 @@ gem "ckeditor", "3.7.1"
 gem 'sitemap_generator'
 gem 'delayed_job_active_record'
 gem 'daemons'
-gem 'bootswatch-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'

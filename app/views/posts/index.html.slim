@@ -7,6 +7,6 @@ section.posts-list
             h2
               ' #{link_to post.title, post_path(post)}
               small.pull-right= l post.created_at, :format => :short
-            span #{simple_format post.content[0..150] + "..."}
+            span #{raw post.content[0..150] + "..."}
             = link_to "閱讀全部", post_path(post), :class => 'btn btn-primary'
   = will_paginate @posts

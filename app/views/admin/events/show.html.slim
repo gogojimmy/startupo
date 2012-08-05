@@ -8,7 +8,7 @@ section.event.row
         td.event_description= @event.user.name
       tr
         td= I18n.t('event.attributes.description')
-        td.event_description= simple_format @event.description
+        td.event_description= raw @event.description
       tr
         td= I18n.t('event.attributes.duration')
         td.event_description= "#{I18n.l(@event.start_time)} #{I18n.t('to')} #{I18n.l(@event.end_time)}"

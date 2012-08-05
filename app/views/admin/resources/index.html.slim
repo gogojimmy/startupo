@@ -1,7 +1,7 @@
-div.dashboard.row
-  aside.span2
+div.dashboard.row-fluid
+  aside.span3
     div.well
       = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-resources' }
-  div.span10
+  div.span9
     = render 'list'
     = will_paginate @resources

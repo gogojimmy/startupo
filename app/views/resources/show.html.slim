@@ -3,7 +3,9 @@ section.resource.row
     head.resource.page-header
       h1= @resource.title
     div.well.resource-well
-      h2= simple_format @resource.description
+      = simple_format @resource.description
+    div
+      = render :partial => "shared/share_this"
   aside.funcion.span3
     = show_want_button(@resource, current_user)
   /div.resource-matchers-count.span4

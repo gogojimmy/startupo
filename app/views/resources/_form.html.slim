@@ -11,7 +11,7 @@ div.row
       = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name, :class => 'resource-inputs', 'data-content' => '史塔波平台在收到您的需求時會和您電話聯絡,若您需要提供另外的聯絡人,請在此告知我們', 'data-original-title' => '聯絡人該如何寫？' }
       = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile, :class => 'resource-inputs', 'data-content' => '若您提供的聯絡電話非資料中提供的,請在此告知我們', 'data-original-title' => '聯絡電話該如何寫？'}
       = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email, :class => 'resource-inputs', 'data-content' => '若您提供的Email非資料中提供的,請在此告知我們', 'data-original-title' => 'Email 該如何寫？' }
-      = f.input :description, :label => I18n.t('resource.attributes.description'), :input_html => {:class => 'resource-inputs', 'data-content' => '史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請詳細敍述您想找的資源', 'data-original-title' => '資源描述該怎麼寫？', :rows => 5}
+      = f.input :description, :as => :ckeditor, :label => I18n.t('resource.attributes.description'), :input_html => {:class => 'resource-inputs', 'data-content' => '史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請詳細敍述您想找的資源', 'data-original-title' => '資源描述該怎麼寫？', :rows => 15, :toolbar => "Easy"}
       = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons, :item_wrapper_class =>'inline', :hint => '您可以選擇資源公開於網站上,或針對特定族群發佈'
       = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes, :item_wrapper_class =>'inline', :hint => ' 史塔波平台提供協尋以下資料: 團隊 / 供應商/ 人脈資源 / 製造技術/ 營銷策略/ 通路 / 媒体 / 資金, 請先定義您的資源內容, 可以複選'
       div.control-group

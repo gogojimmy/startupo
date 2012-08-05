@@ -17,7 +17,7 @@ section.event.row
           div.event-location
             small 地點: #{event.address}
           div.event-description
-            = simple_format truncate(event.description, :length => 150)
+            = raw truncate(event.description, :length => 150)
         div.event-join.span3
           - if current_user && event.attendees.include?(current_user)
             = link_to I18n.t('event.action.joined'), '', :class => 'btn btn-danger btn-large', :disabled => true
