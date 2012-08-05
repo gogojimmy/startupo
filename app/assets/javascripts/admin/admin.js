@@ -8,4 +8,6 @@
 //= require bootstrap-popover
 //= require bootstrap-modal
 //= require bootstrap-tab
+//= require bootstrap-button
 //= require ckeditor/init
+//= require bootstrap

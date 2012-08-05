@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :join_event_attendee_ships
   has_many :join_events, :class_name => Event,
            :through => :join_event_attendee_ships
+  has_many :posts
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :id_no, :mobile, :company, :title, :address, :name,

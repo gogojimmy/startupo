@@ -1,4 +1,7 @@
 zh_tw:
+  public: '公開'
+  draft: '草稿'
+  closed: '關閉'
   proccessing: '處理中'
   pending: '未處理'
   denied: '已拒絕'
@@ -13,6 +16,11 @@ zh_tw:
   contacting: '聯絡中'
   deny: '拒絕'
   matched: '就確定是你了'
+  posts: '史塔波訊息'
+  post:
+    add_post: '新增文章'
+    author: '作者'
+    delete_post: '刪除文章'
   action:
     edit: '修改'
     save: '儲存'

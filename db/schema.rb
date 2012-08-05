@@ -125,6 +125,18 @@ ActiveRecord::Schema.define(:version => 20120710032501) do
   add_index "join_event_attendee_ships", ["event_id"], :name => "index_join_event_attendee_ships_on_event_id"
   add_index "join_event_attendee_ships", ["user_id"], :name => "index_join_event_attendee_ships_on_user_id"
 
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "status"
+    t.integer  "user_id"
+  end
+
+  add_index "posts", ["status"], :name => "index_posts_on_status"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
   create_table "resource_admin_category_ships", :force => true do |t|
     t.integer  "resource_id"
     t.integer  "admin_category_id"
