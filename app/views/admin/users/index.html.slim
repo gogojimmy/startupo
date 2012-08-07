@@ -30,4 +30,4 @@ div.dashboard.row
             td 管理員
           - else
             td= link_to '提升為管理員', "upgrade/#{user.id}", :method => :put, :class => 'btn btn-primary'
-    = will_paginate
+    = will_paginate @users

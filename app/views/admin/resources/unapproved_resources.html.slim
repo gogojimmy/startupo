@@ -11,4 +11,4 @@ div.dashboard.row
         tr
           td.resource_type-name= link_to resource.title, admin_resource_path(resource)
           td.resource_type-description= resource.description
-    =will_paginate
+    =will_paginate @resources

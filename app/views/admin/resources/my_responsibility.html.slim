@@ -4,4 +4,4 @@ div.dashboard.row
       = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-my_responsibility' }
   div.span10
     = render 'list'
-    =will_paginate
+    =will_paginate @resources

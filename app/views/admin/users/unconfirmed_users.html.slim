@@ -13,4 +13,4 @@ div.dashboard.row
         tr
           td= user.created_at.to_date
           td= link_to user.name, admin_user_path(user)
-    = will_paginate
+    = will_paginate @users
