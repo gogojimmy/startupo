@@ -2,12 +2,14 @@ Startup::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   root :to => "resources#index"
-  devise_for :users, :skip => [:sessions]
+  devise_for :users, :skip => [:sessions], controllers: {omniauth_callbacks: "omniauth_callbacks"}
   as :user do
     get 'signin' => 'devise/sessions#new', :as => :new_user_session
     post 'signin' => 'devise/sessions#create', :as => :user_session
     delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
 
   resources :users, :only => [:show, :edit, :update] do
     get '/resources' => "resources#index"
