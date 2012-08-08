@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :id_no, :mobile, :company, :title, :address, :name,
-                  :birthday, :is_admin, :confirmed_by, :industry
+                  :birthday, :is_admin, :confirmed_by, :industry, :provider,
+                  :uid, :access_token
   validates_format_of :id_no, :with => /^\w[12]\d{8}$/
   validates_format_of :email,
                       :with => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -34,9 +35,17 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
+      user.access_token = auth.credentials.token
       user.email = auth.info.email
       user.birthday = auth.info.birthday
     end
+  end
+
+  def assign_omniauth(auth)
+    return false if User.where(auth.slice(:provider, :uid)).count > 0
+    self.update_attributes(:provider => auth.provider,
+                           :uid => auth.uid,
+                           :access_token => auth.credentials.token)
   end
 
   def self.new_with_session(params, session)

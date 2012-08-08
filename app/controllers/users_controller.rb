@@ -23,4 +23,12 @@ class UsersController < ApplicationController
       render :action => 'edit', :error => @user.errors
     end
   end
+
+  def destroy_facebook
+    @user = current_user
+    @user.update_attributes(:provider => nil,
+                            :uid => nil,
+                            :access_token => nil)
+    redirect_to current_user, :notice => I18n.t('provider.remove_successful')
+  end
 end

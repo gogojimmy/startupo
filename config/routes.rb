@@ -13,6 +13,7 @@ Startup::Application.routes.draw do
 
   resources :users, :only => [:show, :edit, :update] do
     get '/resources' => "resources#index"
+    get '/destroy_facebook' => "users#destroy_facebook"
   end
   resources :resources, :except => [:destroy] do
     put '/i_want_it' => 'resources#i_want_it'
