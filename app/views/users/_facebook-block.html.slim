@@ -1,0 +1,3 @@
+= image_tag("https://graph.facebook.com/#{user.uid}/picture")
+'
+= link_to "(#{I18n.t('action.remove')})", user_destroy_facebook_path(user)

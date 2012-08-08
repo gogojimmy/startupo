@@ -36,6 +36,7 @@ zh_tw:
     make_request: '尋求媒合機會'
     actions: '操作'
     download: '下載'
+    remove: '移除'
   to: '到'
   user:
     attributes:
@@ -65,6 +66,7 @@ zh_tw:
     forget_your_password?: '忘記你的密碼?'
     email: 'Email'
     send_me_reset_password_instructions: '寄送重設密碼信給我'
+    facebook: 'Facebook'
     devise:
       sign_up: '註冊史塔波帳號'
       sign_in: '登入'
@@ -185,6 +187,10 @@ zh_tw:
   comment:
     update_message: "%{user} 將 %{attr} 從 %{from} 更改為 %{to}"
     created_successful: '留言新增成功'
+  provider:
+    link_facebook: "連結 Facebook"
+    sign_in_with_facebook: "使用 Facebook 帳號登入"
+    remove_successful: "移除成功"
   date:
     abbr_day_names:
     - 日

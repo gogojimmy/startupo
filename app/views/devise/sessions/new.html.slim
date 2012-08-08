@@ -17,4 +17,8 @@ section
           = f.input :remember_me, :label => I18n.t('user.devise.remember_me'), :as => :boolean if devise_mapping.rememberable?
         .actions
           = f.button :submit, I18n.t('user.devise.sign_in'), :class => 'btn btn-primary btn-large'
+      = link_to user_omniauth_authorize_path(:facebook), :class => 'btn btn-info btn-large' do
+        i.icon-facebook
+        '  使用 Facebook 登入
+      br
       = render "links"
