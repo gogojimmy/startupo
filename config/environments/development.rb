@@ -35,3 +35,6 @@ Startup::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+ENV["FACEBOOK_ID"] = "449916598364333"
+ENV["FACEBOOK_SECRET_KEY"] = "5e8071031e87ff30df63a4c0c2803650"

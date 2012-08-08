@@ -71,6 +71,9 @@ Startup::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
 
+ENV["FACEBOOK_ID"] = "342365479179470"
+ENV["FACEBOOK_SECRET_KEY"] = "f626c12a029f21f34721ef49a5c63b75"
+
 Startup::Application.config.middleware.use ExceptionNotifier,
   :email_prefix => "[Startupo Exception Notifier - Production] ",
   :sender_address => %{"notifier" <admin@startupo.cc>},

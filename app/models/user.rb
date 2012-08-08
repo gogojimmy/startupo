@@ -1,6 +1,6 @@
 #encoding: utf-8
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :resources
   has_many :resource_matcher_ships
@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :id_no, :mobile, :company, :title, :address, :name,
-                  :birthday, :is_admin, :confirmed_by, :industry
+                  :birthday, :is_admin, :confirmed_by, :industry, :provider,
+                  :uid, :access_token
   validates_format_of :id_no, :with => /^\w[12]\d{8}$/
   validates_format_of :email,
                       :with => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -29,6 +30,46 @@ class User < ActiveRecord::Base
                "helth" => "健康產業"}
 
   validates_inclusion_of :industry, :in => INDUSTRY.keys
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.access_token = auth.credentials.token
+      user.email = auth.info.email
+      user.birthday = auth.info.birthday
+    end
+  end
+
+  def assign_omniauth(auth)
+    return false if User.where(auth.slice(:provider, :uid)).count > 0
+    self.update_attributes(:provider => auth.provider,
+                           :uid => auth.uid,
+                           :access_token => auth.credentials.token)
+  end
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
 
   def integrety
     has_value = 0.0
