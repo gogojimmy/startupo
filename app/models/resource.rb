@@ -19,6 +19,7 @@ class Resource < ActiveRecord::Base
   scope :unapproved, where(:assign_to => nil)
   scope :my_responsibility, lambda{ |user| where(:assign_to => user) }
   scope :by_user_id, lambda{ |user_id| where(:user_id => user_id) }
+  default_scope :order => 'created_at DESC'
 
   PRIVACY = { "public" => "公開", "private" => "隱藏" }
   STATE = { "pending" => "未處理", "proccessing" => "處理中",

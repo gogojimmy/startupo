@@ -61,7 +61,7 @@ section.resource
               h2= link_to b.title, resource_path(b)
             div.resource-description
               div.well
-                = simple_format(b.description[0..70] + "......#{link_to "閱讀全部", resource_path(a)}")
+                = simple_format(b.description[0..70] + "......#{link_to "閱讀全部", resource_path(b)}")
             /div.resource-footer
               /i class="icon-user"
               /= " #{resource.matchers.count}"

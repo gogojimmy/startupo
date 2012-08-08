@@ -8,5 +8,5 @@ section.posts-list
               ' #{link_to post.title, post_path(post)}
               small.pull-right= l post.created_at, :format => :short
             span #{raw post.content[0..150] + "..."}
-            = link_to "閱讀全部", post_path(post), :class => 'btn btn-primary'
+          = link_to "閱讀全部", post_path(post), :class => 'btn btn-primary'
   = will_paginate @posts
