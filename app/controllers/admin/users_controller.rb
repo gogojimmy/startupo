@@ -13,6 +13,11 @@ class Admin::UsersController < ApplicationController
       @users = @users.by_industry(params[:type])
     end
     @users = @users.paginate(:page => params[:page])
+    respond_to do |format|
+      format.html
+      format.csv { send_data User.scoped.to_csv }
+      format.xls
+    end
   end
 
   def confirm_user

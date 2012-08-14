@@ -1,8 +1,10 @@
 div.dashboard.row
-  aside.span2
+  aside.span3
     div.well
       = render :partial => 'admin/dashboards/aside', :locals => { :id => 'startupo-users' }
-  div.span10
+  div.span9
+    div
+      = link_to "Excel", admin_users_path(format: "xls"), :class => 'btn'
     div.resource.filter
       ul class="nav nav-pills" id="resource-tabs"
         li id="all"= link_to "所有", admin_users_path
