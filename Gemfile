@@ -39,6 +39,7 @@ gem 'sitemap_generator'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'omniauth-facebook'
+gem 'gibbon'
 
 # Deploy with Capistrano
 gem 'capistrano'

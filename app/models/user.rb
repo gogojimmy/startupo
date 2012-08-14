@@ -98,4 +98,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def export_to_mailchimp
+    gb = Gibbon.new(MAILCHIMP_CONFIG["api_key"])
+    hash = gb.listBatchSubscribe({:id => MAILCHIMP_CONFIG["startupo_list_id"],
+                                  :batch => [{"EMAIL" => self.email,
+                                              "EMAIL_TYPE" => "html"}],
+                                  :double_optin => false})
+    if hash["error"]
+      raise "Failed to connect to MailChimp"
+      logger.error "Failed to connect to MailChimp because ====> #{hash["error"]}"
+    end
+
+    if hash["error_count"] != 0
+      raise "Failed to import user to MailChimp"
+      logger.error "Failed to import user to MailChimp because =====> #{hash[errors]}"
+    end
+  end
+
 end

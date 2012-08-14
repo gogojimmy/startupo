@@ -23,6 +23,7 @@ class Admin::UsersController < ApplicationController
   def confirm_user
     @user = User.find(params[:id])
     if @user.update_attributes(:confirmed_by => current_user.id)
+      @user.delay.export_to_mailchimp
       flash[:notice] = I18n.t('admin.message.user_confirmed')
       redirect_to :back
     else
