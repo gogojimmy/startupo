@@ -7,4 +7,7 @@ class WelcomeController < ApplicationController
   def about
   end
 
+  def about_bmca
+  end
+
 end
