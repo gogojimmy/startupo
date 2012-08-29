@@ -16,7 +16,7 @@ section.resource.row
         td.resource_description= @resource.user.name
       tr
         td= I18n.t('resource.attributes.description')
-        td.resource_description= @resource.description
+        td.resource_description= simple_format @resource.description
       tr
         td= I18n.t('resource.attributes.have_resource')
         td.resource_have_resource= @resource.have_resource

@@ -18,7 +18,7 @@ section.resource.form-inputs
     = f.input :contact, :label => I18n.t('resource.attributes.contact'), :input_html => { :value => current_user.name }
     = f.input :phone, :label => I18n.t('resource.attributes.phone'), :input_html => { :value => current_user.mobile }
     = f.input :email, :label => I18n.t('resource.attributes.email'), :input_html => { :value => current_user.email }
-  = f.input :description, :label => I18n.t('resource.attributes.description')
+  = f.input :description, :as => :ckeditor, :label => I18n.t('resource.attributes.description')
   = f.input :privacy, :label => I18n.t('resource.attributes.privacy'), :collection => Resource::PRIVACY.invert, :as => :radio_buttons
   = f.association :resource_types, :label => I18n.t('resource.attributes.types'), :as => :check_boxes
   = f.association :cooperate_ways, :label => I18n.t('resource.attributes.cooperate_ways'), :as => :check_boxes

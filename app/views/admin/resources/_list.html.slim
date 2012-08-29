@@ -9,21 +9,23 @@ table.table.table-striped.table-condensed.table-bordered
   - @resources.each do |resource|
     tr
       td.resource-state
-        - if resource.state = "proccessing"
+        - if resource.state == "proccessing"
           span.badge.badge-success= t resource.state
-        - elsif resource.state = "pending"
-          span.badge.badge-warning= t.resource.state
-        - elsif resource.state = "denied"
-          span.badge.badge-improtant= t.resource.state
+        - elsif resource.state == "pending"
+          span.badge.badge-warning= t resource.state
+        - elsif resource.state == "denied"
+          span.badge.badge-improtant= t resource.state
+        - elsif resource.state == "done"
+          span.badge.badge-info= t resource.state
         - else
-          span.badge= t.resource.state
+          span.badge= t resource.state
       - if resource.assignee
         td.resource-assignee= resource.assignee.name
       - else
         td 未指定處理人員
       td.resource-to_public= resource.to_public
       td.resource-name= link_to resource.title, admin_resource_path(resource)
-      td.resource-description= resource.description
+      td.resource-description= simple_format resource.description
       td.reosurce-matchers
         - if resource.matchers.count <= 5
             span.badge= resource.matchers.count
