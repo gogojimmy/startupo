@@ -24,7 +24,7 @@ Startup::Application.routes.draw do
 
   resources :posts, :only => [:index, :show]
   get '/about', :to => "welcome#about"
-  get '/about_bmca', :to => "welcome#about_bmca"
+  get '/bmca', :to => "welcome#bmca"
 
   namespace :admin do
     get '/dashboard' => "dashboards#index"
