@@ -4,4 +4,4 @@ div.row
     small= l @post.created_at, :format => :short
   div.post-content
     = link_to "編輯這篇文章", edit_admin_post_path(@post), :class => 'btn btn-primary'
-    = raw @post.content
+    = simple_format @post.content
