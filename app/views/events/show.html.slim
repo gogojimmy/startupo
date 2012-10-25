@@ -5,7 +5,7 @@ section.event.row
     table.table.table-striped.table-condensed.table-bordered.event-basic-info
       tr
         td width="65px"= I18n.t('event.attributes.description')
-        td.event_description= raw @event.description
+        td.event_description= simple_format @event.description
       tr
         td width="65px"= I18n.t('event.attributes.duration')
         td.event_description= "#{l(@event.start_time, :format => :long)} #{I18n.t('to')} #{l(@event.end_time, :format => :long)}"
