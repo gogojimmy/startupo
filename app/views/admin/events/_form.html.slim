@@ -4,7 +4,7 @@
     = f.error_notification
 section.event.form-inputs
   = f.input :name, :label => I18n.t('event.attributes.name'), :input_html => {:class => 'span8'}
-  = f.input :description, :as => :ckeditor, :label => I18n.t('event.attributes.description'), :input_html => {:rows => 20, :cols => 10}, :toolbar => 'Easy'
+  = f.input :description, :label => I18n.t('event.attributes.description'), :input_html => {:rows => 20, :cols => 10, class: 'span8'}
   = f.input :start_time, :label => I18n.t('event.attributes.start_time')
   = f.input :end_time, :label => I18n.t('event.attributes.end_time')
   = f.input :address, :label => I18n.t('event.attributes.address'), :input_html => {:class => 'span8'}

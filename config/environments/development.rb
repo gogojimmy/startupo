@@ -36,5 +36,5 @@ Startup::Application.configure do
   config.assets.debug = true
 end
 
-ENV["FACEBOOK_ID"] = "449916598364333"
-ENV["FACEBOOK_SECRET_KEY"] = "5e8071031e87ff30df63a4c0c2803650"
+ENV["FACEBOOK_ID"] = "342365479179470"
+ENV["FACEBOOK_SECRET_KEY"] = "f626c12a029f21f34721ef49a5c63b75"
