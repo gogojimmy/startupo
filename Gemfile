@@ -34,7 +34,7 @@ gem 'devise'
 gem 'will_paginate'
 gem 'geocoder'
 gem 'exception_notification'
-gem "ckeditor", "3.7.1"
+gem "ckeditor"
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'omniauth-facebook'
